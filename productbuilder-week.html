@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30대 남성 데일리 코디 추천</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0f172a;
+            --secondary-bg: rgba(30, 41, 59, 0.7);
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-bg);
+            background: radial-gradient(circle at top right, #1e1b4b, #0f172a);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 2rem;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .weather-card,
+        .outfit-card {
+            background: var(--secondary-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .weather-card:hover,
+        .outfit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .weather-info {
+            text-align: center;
+        }
+
+        .weather-icon {
+            font-size: 5rem;
+            margin: 1.5rem 0;
+            display: block;
+        }
+
+        .temp-main {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-desc {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .detail-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            display: block;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .outfit-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .outfit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .outfit-tag {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--accent-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .outfit-image-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .outfit-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: scale 0.5s ease;
+        }
+
+        .outfit-image-container:hover img {
+            scale: 1.05;
+        }
+
+        .outfit-list {
+            list-style: none;
+        }
+
+        .outfit-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .outfit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-category {
+            color: var(--text-dim);
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--accent-blue);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 850px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Daily Outfit</h1>
+        <p class="subtitle">30대 남성을 위한 날씨 기반 스마트 코디 추천</p>
+    </header>
+
+    <div class="main-container">
+        <!-- Weather Section -->
+        <section class="weather-card">
+            <div class="weather-info">
+                <h3>내일의 날씨</h3>
+                <span class="weather-icon" id="weather-icon">☀️</span>
+                <div class="temp-main" id="temp-main">22°C</div>
+                <div class="weather-desc" id="weather-desc">밝고 맑은 하늘</div>
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">최저 기온</span>
+                        <span class="detail-value" id="temp-min">14°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">최고 기온</span>
+                        <span class="detail-value" id="temp-max">26°C</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">강수 확률</span>
+                        <span class="detail-value" id="rain-chance">5%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">습도</span>
+                        <span class="detail-value" id="humidity">45%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outfit Section -->
+        <section class="outfit-card">
+            <div class="outfit-header">
+                <h2>오늘의 추천 코디</h2>
+                <span class="outfit-tag" id="outfit-tag">Casual Chic</span>
+            </div>
+
+            <div class="outfit-image-container" id="outfit-image-container">
+                <!-- Image will be injected via JS -->
+            </div>
+
+            <ul class="outfit-list" id="outfit-list">
+                <!-- List will be injected via JS -->
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Mock data for demonstration
+        // In a real app, you would fetch from OpenWeatherMap API or similar
+        const weatherData = {
+            temp: 22,
+            min: 14,
+            max: 26,
+            condition: 'Sunny',
+            humidity: 45,
+            rainChance: 5
+        };
+
+        const outfits = {
+            'Sunny': {
+                tag: 'Premium Casual',
+                icon: '☀️',
+                desc: '밝고 맑은 하늘',
+                image: 'summer_outfit_30m_1772527795430.png',
+                items: [
+                    { cat: 'Top', name: '린넨 셔츠 (네이비)' },
+                    { cat: 'Bottom', name: '베이지 치노 팬츠' },
+                    { cat: 'Shoes', name: '가죽 오픈 샌들' },
+                    { cat: 'Accessory', name: '메탈 워치 & 선글라스' }
+                ]
+            },
+            'Rainy': {
+                tag: 'Urban Tech',
+                icon: '🌧️',
+                desc: '비오는 차분한 날',
+                image: 'rainy_outfit_30m_1772527842778.png',
+                items: [
+                    { cat: 'Outer', name: '방수 트렌치 코트' },
+                    { cat: 'Top', name: '차콜 크루넥 스웨터' },
+                    { cat: 'Bottom', name: '다크 데님 팬츠' },
+                    { cat: 'Shoes', name: '방수 첼시 부츠' }
+                ]
+            },
+            'Cold': {
+                tag: 'Winter Classic',
+                icon: '❄️',
+                desc: '추운 겨울 날씨',
+                image: 'winter_outfit_30m_1772527829265.png',
+                items: [
+                    { cat: 'Outer', name: '프리미엄 파카' },
+                    { cat: 'Top', name: '울 터틀넥' },
+                    { cat: 'Accessory', name: '캐시미어 머플러' },
+                    { cat: 'Shoes', name: '테크니컬 부츠' }
+                ]
+            },
+            'Autumn': {
+                tag: 'Smart Casual',
+                icon: '🍂',
+                desc: '서늘한 가을 날씨',
+                image: 'autumn_outfit_30m_1772527816047.png',
+                items: [
+                    { cat: 'Outer', name: '울 싱글 코트' },
+                    { cat: 'Top', name: '캐시미어 니트' },
+                    { cat: 'Bottom', name: '인디고 생지 데님' },
+                    { cat: 'Shoes', name: '더비 슈즈' }
+                ]
+            }
+        };
+
+        function updateUI() {
+            let selectedType = 'Sunny';
+            if (weatherData.temp < 5) selectedType = 'Cold';
+            else if (weatherData.temp < 15) selectedType = 'Autumn';
+            else if (weatherData.condition === 'Rainy') selectedType = 'Rainy';
+
+            const outfit = outfits[selectedType];
+
+            // Update Weather card
+            document.getElementById('weather-icon').textContent = outfit.icon;
+            document.getElementById('temp-main').textContent = `${weatherData.temp}°C`;
+            document.getElementById('weather-desc').textContent = outfit.desc;
+            document.getElementById('temp-min').textContent = `${weatherData.min}°C`;
+            document.getElementById('temp-max').textContent = `${weatherData.max}°C`;
+            document.getElementById('rain-chance').textContent = `${weatherData.rainChance}%`;
+            document.getElementById('humidity').textContent = `${weatherData.humidity}%`;
+
+            // Update Outfit card
+            document.getElementById('outfit-tag').textContent = outfit.tag;
+            document.getElementById('outfit-image-container').innerHTML = `<img src="${outfit.image}" alt="Outfit Recommendation">`;
+
+            const listEl = document.getElementById('outfit-list');
+            listEl.innerHTML = outfit.items.map(item => `
+                <li>
+                    <span class="item-category">${item.cat}</span>
+                    <span class="item-name">${item.name}</span>
+                </li>
+            `).join('');
+        }
+
+        // Initialize
+        window.addEventListener('load', updateUI);
+    </script>
+</body>
+
+</html>
