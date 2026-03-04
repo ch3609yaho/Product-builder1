@@ -408,7 +408,7 @@
                 },
                 'Rainy': {
                     tag: 'Stylish Rainy',
-                    image: 'autumn outfit female.png', // User requested for tomorrow (which is Rainy)
+                    image: 'autumn_outfit_female.png', // Corrected name
                     items: [
                         { cat: 'Outer', name: '네이비 후드 트렌치' },
                         { cat: 'Top', name: '면 반팔 니트' },
@@ -514,8 +514,12 @@
             }
 
             const outfit = outfits[currentGender][type];
+            const fallback = currentGender === 'men'
+                ? 'https://images.unsplash.com/photo-1543852084-298319e71fd1?auto=format&fit=crop&w=500&q=80'
+                : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80';
+
             document.getElementById('outfit-tag').textContent = outfit.tag;
-            document.getElementById('outfit-image').innerHTML = `<img src="${outfit.image}" alt="Outfit Recommendation" onerror="this.src='https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=500&q=80'">`;
+            document.getElementById('outfit-image').innerHTML = `<img src="${outfit.image}" alt="Outfit Recommendation" onerror="this.src='${fallback}'">`;
             document.getElementById('outfit-list').innerHTML = outfit.items.map(item => `
                 <li>
                     <span class="item-cat">${item.cat}</span>
