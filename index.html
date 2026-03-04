@@ -334,14 +334,24 @@
 
         const outfits = {
             men: {
-                'Sunny': {
-                    tag: 'Premium Casual',
+                'Hot': {
+                    tag: 'Summer Office',
                     image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
                     items: [
                         { cat: 'Top', name: '린넨 셔츠 (스카이 블루)' },
-                        { cat: 'Bottom', name: '베이지 테이퍼드 슬랙스' },
-                        { cat: 'Shoes', name: '브라운 로퍼' },
-                        { cat: 'Accessory', name: '가죽 스트랩 워치' }
+                        { cat: 'Bottom', name: '베이지 시어서커 슬랙스' },
+                        { cat: 'Shoes', name: '가죽 로퍼' },
+                        { cat: 'Accessory', name: '메탈 스트랩 워치' }
+                    ]
+                },
+                'Sunny': {
+                    tag: 'Premium Business',
+                    image: 'https://images.unsplash.com/photo-1592755220551-5a2305ca75aa?auto=format&fit=crop&w=800&q=80',
+                    items: [
+                        { cat: 'Outer', name: '라이트 블레이저' },
+                        { cat: 'Top', name: '옥스포드 드레스 셔츠' },
+                        { cat: 'Bottom', name: '네이비 테이퍼드 슬랙스' },
+                        { cat: 'Shoes', name: '브라운 더비 슈즈' }
                     ]
                 },
                 'Rainy': {
@@ -350,7 +360,7 @@
                     items: [
                         { cat: 'Outer', name: '베이지 트렌치 코트' },
                         { cat: 'Top', name: '화이트 드레스 셔츠' },
-                        { cat: 'Bottom', name: '네이비 방수 팬츠' },
+                        { cat: 'Bottom', name: '네이비 워터프루프 팬츠' },
                         { cat: 'Shoes', name: '검정 더비 슈즈' }
                     ]
                 },
@@ -360,60 +370,70 @@
                     items: [
                         { cat: 'Outer', name: '차콜 캐시미어 코트' },
                         { cat: 'Top', name: '블랙 터틀넥 니트' },
-                        { cat: 'Bottom', name: '다크 기모 슬랙스' },
-                        { cat: 'Shoes', name: '첼시 부츠' }
+                        { cat: 'Bottom', name: '다크 기모 울 슬랙스' },
+                        { cat: 'Shoes', name: '가죽 첼시 부츠' }
                     ]
                 },
-                'Autumn': {
-                    tag: 'Smart Casual',
+                'Chilly': {
+                    tag: 'Smart Layering',
                     image: 'https://images.unsplash.com/photo-1592755220551-5a2305ca75aa?auto=format&fit=crop&w=800&q=80',
                     items: [
-                        { cat: 'Outer', name: '네이비 블레이저' },
-                        { cat: 'Top', name: '옥스포드 셔츠' },
-                        { cat: 'Bottom', name: '그래이 치노 슬랙스' },
+                        { cat: 'Outer', name: '퀼팅 베스트' },
+                        { cat: 'Top', name: '스트라이프 셔츠' },
+                        { cat: 'Bottom', name: '그래이 치노 패밀리' },
                         { cat: 'Shoes', name: '스웨이드 로퍼' }
                     ]
                 }
             },
             women: {
-                'Sunny': {
-                    tag: 'Office Chic',
+                'Hot': {
+                    tag: 'Summer Chic',
                     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
                     items: [
-                        { cat: 'Top', name: '실크 블라우스 (화이트)' },
-                        { cat: 'Bottom', name: '와이드 슬랙스 (베이지)' },
-                        { cat: 'Shoes', name: '슬링백 힐' },
-                        { cat: 'Accessory', name: '심플 골드 네클리스' }
+                        { cat: 'Top', name: '민소매 실크 블라우스' },
+                        { cat: 'Bottom', name: '린넨 쿨 와이드 슬랙스' },
+                        { cat: 'Shoes', name: '스트랩 샌들 힐' },
+                        { cat: 'Accessory', name: '심플 골드 브레이슬릿' }
+                    ]
+                },
+                'Sunny': {
+                    tag: 'Modern Office',
+                    image: 'https://images.unsplash.com/photo-1567333160937-c4524456a6f6?auto=format&fit=crop&w=800&q=80',
+                    items: [
+                        { cat: 'Top', name: '타이 블라우스' },
+                        { cat: 'Outer', name: '슬림핏 자켓' },
+                        { cat: 'Bottom', name: 'A라인 미디 스커트' },
+                        { cat: 'Shoes', name: '스틸레토 힐' }
                     ]
                 },
                 'Rainy': {
                     tag: 'Stylish Rainy',
                     image: 'https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=800&q=80',
                     items: [
-                        { cat: 'Outer', name: '네이비 숏 트렌치' },
-                        { cat: 'Top', name: '스트라이프 셔츠' },
-                        { cat: 'Bottom', name: 'H라인 스커트' },
-                        { cat: 'Shoes', name: '에나멜 플랫 슈즈' }
+                        { cat: 'Outer', name: '네이비 후드 트렌치' },
+                        { cat: 'Top', name: '면 반팔 니트' },
+                        { cat: 'Bottom', name: '치마 바지 (큐롯)' },
+                        { cat: 'Shoes', name: '레인 펌프스' }
                     ]
                 },
                 'Cold': {
                     tag: 'Cozy Professional',
                     image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80',
                     items: [
-                        { cat: 'Outer', name: '라이트 그레이 핸드메이드 코트' },
-                        { cat: 'Top', name: '아이보리 캐시미어 니트' },
-                        { cat: 'Bottom', name: '울 와이드 팬츠' },
-                        { cat: 'Shoes', name: '삭스 앵클 부츠' }
+                        { cat: 'Outer', name: '헤링본 울 코트' },
+                        { cat: 'Top', name: '캐시미어 반목 니트' },
+                        { cat: 'Bottom', name: '울 혼방 와이드 팬츠' },
+                        { cat: 'Shoes', name: '삭스 부츠' }
                     ]
                 },
-                'Autumn': {
-                    tag: 'Modern Classic',
+                'Chilly': {
+                    tag: 'Fall Layering',
                     image: 'https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=800&q=80',
                     items: [
-                        { cat: 'Top', name: '타이 블라우스' },
-                        { cat: 'Outer', name: '카멜 가디건' },
-                        { cat: 'Bottom', name: '체크 펜슬 스커트' },
-                        { cat: 'Shoes', name: '레더 펌프스' }
+                        { cat: 'Outer', name: '카멜 롱 가디건' },
+                        { cat: 'Top', name: '라벤더 셔츠' },
+                        { cat: 'Bottom', name: '펜슬 체크 스커트' },
+                        { cat: 'Shoes', name: '태슬 로퍼' }
                     ]
                 }
             }
@@ -444,11 +464,11 @@
                 updateMainUI();
             } catch (e) {
                 console.error("Weather fetch failed:", e);
-                // Simple hardcoded fallback
+                // Simple hardcoded fallback for local testing
                 weatherForecast = [
-                    { date: 'Tomorrow', max: 15, min: 8, code: 0, rain: 0 },
-                    { date: 'Next', max: 17, min: 10, code: 1, rain: 20 },
-                    { date: 'Later', max: 14, min: 6, code: 51, rain: 60 }
+                    { date: 'Tomorrow', max: 15, min: 8, code: 0, rain: 5 },
+                    { date: 'Next', max: 22, min: 12, code: 1, rain: 10 },
+                    { date: 'Later', max: 13, min: 6, code: 61, rain: 80 }
                 ];
                 updateForecastRow();
                 updateMainUI();
@@ -479,10 +499,19 @@
             document.getElementById('main-rain').textContent = `${day.rain}%`;
             document.getElementById('main-weather-desc').textContent = getDayDesc(day);
 
+            // Granular categorization logic
             let type = 'Sunny';
-            if (day.max < 5) type = 'Cold';
-            else if (day.max < 16) type = 'Autumn';
-            else if (day.rain > 40 || (day.code >= 51 && day.code <= 67)) type = 'Rainy';
+            if (day.rain > 40 || (day.code >= 51 && day.code <= 67)) {
+                type = 'Rainy';
+            } else if (day.max < 7) {
+                type = 'Cold';
+            } else if (day.max < 17) {
+                type = 'Chilly';
+            } else if (day.max >= 25) {
+                type = 'Hot';
+            } else {
+                type = 'Sunny';
+            }
 
             const outfit = outfits[currentGender][type];
             document.getElementById('outfit-tag').textContent = outfit.tag;
