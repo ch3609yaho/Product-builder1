@@ -381,6 +381,19 @@
             opacity: 0.9;
         }
 
+        .disqus-section {
+            background: var(--secondary-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            width: 100%;
+            max-width: 1000px;
+            animation: slideUp 0.8s ease-out;
+        }
+
         @media (max-width: 600px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -454,6 +467,12 @@
             <!-- Cards will be injected -->
         </section>
 
+        <section class="disqus-section">
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
+                    by Disqus.</a></noscript>
+        </section>
+
         <!-- Recommendation Form -->
         <section class="recommendation-form-section">
             <div class="form-header">
@@ -472,7 +491,7 @@
                 <div class="form-group">
                     <label for="style">선호 스타일</label>
                     <select id="style" name="style">
-                        <option value="business">정통 비즈니스 루</option>
+                        <option value="business">정통 비즈니스 룩</option>
                         <option value="casual">비즈니스 캐주얼</option>
                         <option value="minimal">미니멀룩</option>
                         <option value="trendy">트렌디 오피스룩</option>
@@ -696,7 +715,33 @@
                     <span class="item-val">${item.name}</span>
                 </li>
             `).join('');
+
+            // Reload Disqus for the specific combination of Gender + Date
+            reloadDisqus();
         }
+
+        function reloadDisqus() {
+            const pageUrl = window.location.href.split('#')[0];
+            const pageId = `${currentGender}-day${selectedDayIndex}`;
+
+            if (typeof DISQUS !== 'undefined') {
+                DISQUS.reset({
+                    reload: true,
+                    config: function () {
+                        this.page.identifier = pageId;
+                        this.page.url = pageUrl + "#!" + pageId;
+                    }
+                });
+            }
+        }
+
+        // Initial Disqus Load
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://productbuilder-rrxaaki6m0.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
 
         function getDayDesc(day) {
             if (day.code >= 51 && day.code <= 67) return '비 소식이 있어 우산이 필요합니다.';
