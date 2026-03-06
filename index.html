@@ -254,15 +254,20 @@
         }
 
         .outfit-display {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .outfit-header {
+            grid-column: span 2;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
         .outfit-tag {
@@ -276,43 +281,83 @@
 
         .outfit-image-container {
             width: 100%;
-            height: 450px;
-            border-radius: 16px;
+            height: 600px;
+            border-radius: 20px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
         }
 
         .outfit-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
             transition: transform 0.5s ease;
         }
 
         .outfit-list {
             list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            height: 100%;
+            justify-content: center;
         }
 
         .outfit-list li {
-            padding: 0.8rem;
+            padding: 1.2rem;
             background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             display: flex;
             flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .outfit-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
         }
 
         .item-cat {
-            font-size: 0.75rem;
-            color: var(--text-dim);
-            margin-bottom: 0.2rem;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
         }
 
         .item-val {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 900px) {
+            .outfit-display {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .outfit-header {
+                grid-column: span 1;
+            }
+
+            .outfit-image-container {
+                height: 500px;
+            }
+
+            .outfit-list {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+            .outfit-list li:hover {
+                transform: translateY(-5px);
+            }
         }
 
         /* 3-Day Forecast Cards */
