@@ -367,8 +367,8 @@
 
         .outfit-display {
             display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 2.5rem;
+            grid-template-columns: 450px 1fr;
+            gap: 3rem;
             align-items: center;
         }
 
@@ -377,27 +377,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 2px solid var(--glass-border);
             padding-bottom: 1rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .outfit-tag {
             background: var(--card-active);
             color: var(--accent-blue);
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 99px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            font-size: 0.95rem;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
         }
 
         .outfit-image-container {
             width: 100%;
-            height: 600px;
-            border-radius: 20px;
+            height: 650px;
+            border-radius: 24px;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.2);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--glass-border);
         }
 
         .outfit-image-container img {
@@ -405,31 +407,56 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .outfit-image-container:hover img {
+            transform: scale(1.05);
         }
 
         .outfit-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.2rem;
             height: 100%;
             justify-content: center;
+            padding: 0;
+            margin: 0;
         }
 
         .outfit-list li {
-            padding: 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .outfit-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-blue);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .outfit-list li:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(12px);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .outfit-list li:hover::before {
+            opacity: 1;
         }
 
         .item-cat {
@@ -917,7 +944,11 @@
                         'Sunny': { tag: '클래식 교복 스타일', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '옥스포드 화이트 셔츠' }, { cat: 'Vest', name: 'v넥 네이비 니트 조끼' }, { cat: 'Bottom', name: '그레이 핏 슬랙스' }] },
                         'Rainy': { tag: '비 오는 날 등교룩', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Outer', name: '생활복 후드 집업' }, { cat: 'Bottom', name: '방수 기능성 슬랙스' }, { cat: 'Shoes', name: '검정 어글리 슈즈' }] },
                         'Cold': { tag: '동복 레이어드', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Outer', name: '네이비 교복 마이' }, { cat: 'Padding', name: '숏 패딩 점퍼' }, { cat: 'Bottom', name: '방풍 울 슬랙스' }] },
-                        'Chilly': { tag: '간절기 셔츠 코디', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '긴팔 옥스포드 셔츠' }, { cat: 'Bottom', name: '그레이 코튼 팬츠' }, { cat: 'Shoes', name: '반스 스타일 스니커즈' }] }
+                        'Chilly': { tag: '간절기 셔츠 코디', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '긴팔 옥스포드 셔츠' }, { cat: 'Bottom', name: '그레이 코튼 팬츠' }, { cat: 'Shoes', name: '반스 스타일 스니커즈' }] },
+                        guide: {
+                            title: '청소년 등교룩 가이드',
+                            tips: ['단정한 교복에 자신만의 개성이 담긴 신발이나 가방으로 포인트를 주는 것이 좋습니다.', '활동성이 많은 시기이므로 신축성 좋은 소재의 이너를 추천합니다.', '환절기에는 쉽게 벗고 입을 수 있는 가디건이나 바람막이를 챙기세요.']
+                        }
                     },
                     'Casual': {
                         'Hot': { tag: '스트릿 썸머룩', image: 'korean_10s_men_casual_hot.png', items: [{ cat: 'Top', name: '오버핏 그래픽 반팔' }, { cat: 'Bottom', name: '와이드 카고 쇼츠' }, { cat: 'Accessory', name: '볼캡 & 메신저 백' }] },
@@ -955,7 +986,11 @@
                         'Sunny': { tag: '프리미엄 비즈니스', image: 'korean_autumn_office_30m_1772599142299.png', items: [{ cat: 'Outer', name: '라이트 블레이저' }, { cat: 'Top', name: '옥스포드 드레스 셔츠' }, { cat: 'Bottom', name: '네이비 테이퍼드 슬랙스' }] },
                         'Rainy': { tag: '어반 테크닉', image: 'korean_rainy_office_30m_1772599245049.png', items: [{ cat: 'Outer', name: '베이지 트렌치 코트' }, { cat: 'Bottom', name: '네이비 워터프루프 팬츠' }] },
                         'Cold': { tag: '윈터 클래식', image: 'korean_winter_office_30m_1772599227140.png', items: [{ cat: 'Outer', name: '차콜 캐시미어 코트' }, { cat: 'Top', name: '블랙 터틀넥 니트' }] },
-                        'Chilly': { tag: '스마트 레이어드', image: 'autumn_outfit_30m_1772527816047.png', items: [{ cat: 'Outer', name: '퀼팅 베스트' }, { cat: 'Top', name: '스트라이프 셔츠' }] }
+                        'Chilly': { tag: '스마트 레이어드', image: 'autumn_outfit_30m_1772527816047.png', items: [{ cat: 'Outer', name: '퀼팅 베스트' }, { cat: 'Top', name: '스트라이프 셔츠' }] },
+                        guide: {
+                            title: '30대 오피스룩 스타일링 가이드',
+                            tips: ['비즈니스 캐주얼은 격식과 활동성을 동시에 잡는 것이 핵심입니다.', '네이비, 차콜 등 기본 컬러의 블레이저는 신뢰감을 줍니다.', '자신의 체형에 맞는 테이퍼드 핏 팬츠가 훨씬 전문적으로 보입니다.']
+                        }
                     },
                     'Date': { 'Sunny': { tag: '로맨틱 디너룩', image: 'korean_30s_men_date_sunny.png', items: [{ cat: 'Outer', name: '체크 블레이저' }, { cat: 'Top', name: '터틀넥 니트' }, { cat: 'Bottom', name: '생지 데님 팬츠' }] } },
                     'Social': { 'Sunny': { tag: '스마트 소셜 스타일', image: 'korean_30s_men_social_sunny.png', items: [{ cat: 'Top', name: '미니멀 라운드 니트' }, { cat: 'Bottom', name: '그레이 치노 팬츠' }, { cat: 'Shoes', name: '독일군 스니커즈' }] } }
@@ -1104,13 +1139,29 @@
                 : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80';
             document.getElementById('outfit-image').innerHTML = `<img src="${recommendation.image}" alt="${recommendation.tag}" onerror="this.src='${fallbackImg}'">`;
 
-            const list = document.getElementById('outfit-items');
+            const list = document.getElementById('outfit-list');
             list.innerHTML = recommendation.items.map(item => `
                 <li>
                     <span class="item-cat">${item.cat}</span>
                     <span class="item-val">${item.name}</span>
                 </li>
             `).join('');
+
+            // Update Styling Guide dynamically
+            const guideSection = document.getElementById('styling-guide');
+            const guideData = occasionData.guide || {
+                title: `${currentOccasion} 스타일링 가이드`,
+                tips: ['현재 날씨와 상황에 맞는 코디를 제안해 드립니다.', '자신만의 스타일로 아이템을 조합해 보세요.', '다양한 연령대별 추천을 확인해 보세요.']
+            };
+
+            guideSection.innerHTML = `
+                <div class="form-header">
+                    <h3>${guideData.title}</h3>
+                    <div style="font-size: 0.9rem; color: var(--text-dim); text-align: left; margin-top: 1.5rem; line-height: 1.8;">
+                        ${guideData.tips.map((tip, idx) => `<strong>${idx + 1}.</strong> ${tip}<br>`).join('')}
+                    </div>
+                </div>
+            `;
 
             // Reload Disqus
             reloadDisqus();
