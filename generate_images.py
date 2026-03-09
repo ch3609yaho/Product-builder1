@@ -7,9 +7,19 @@ import subprocess
 import base64
 
 # --- CONFIGURATION ---
-# 1. Gemini API Key (Recommended to bypass Vertex quotas)
-# Get one at: https://aistudio.google.com/
-GEMINI_API_KEY = "AIzaSyAlaHER_qZEWNf1Jn9Y41E82V1JSlZ43hg"
+# Use a .env file for security (do not commit to git)
+def load_env():
+    env_vars = {}
+    if os.path.exists(".env"):
+        with open(".env", "r") as f:
+            for line in f:
+                if "=" in line:
+                    key, value = line.strip().split("=", 1)
+                    env_vars[key] = value
+    return env_vars
+
+env = load_env()
+GEMINI_API_KEY = env.get("GEMINI_API_KEY") or os.getenv("GEMINI_API_KEY")
 
 # 2. Vertex AI Configuration (Used if GEMINI_API_KEY is not provided)
 PROJECT_ID = "innate-might-488304-n6"
