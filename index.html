@@ -367,9 +367,10 @@
 
         .outfit-display {
             display: grid;
-            grid-template-columns: 450px 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            align-items: center;
+            align-items: stretch;
+            margin-top: 1.5rem;
         }
 
         .outfit-header {
@@ -394,7 +395,8 @@
 
         .outfit-image-container {
             width: 100%;
-            height: 650px;
+            height: 100%;
+            min-height: 550px;
             border-radius: 24px;
             overflow: hidden;
             background: rgba(0, 0, 0, 0.3);
@@ -407,6 +409,7 @@
             height: 100%;
             object-fit: cover;
             object-position: top center;
+            display: block;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -419,14 +422,13 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            height: 100%;
             justify-content: center;
             padding: 0;
             margin: 0;
         }
 
         .outfit-list li {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
@@ -815,9 +817,6 @@
                 <div class="outfit-image-container" id="outfit-image">
                     <!-- Image will be injected -->
                 </div>
-                <div class="outfit-info" id="outfit-info">
-                    <!-- JavaScript will populate here -->
-                </div>
                 <ul class="outfit-list" id="outfit-list">
                     <!-- Items will be injected -->
                 </ul>
@@ -952,7 +951,11 @@
                     },
                     'Casual': {
                         'Hot': { tag: '스트릿 썸머룩', image: 'korean_10s_men_casual_hot.png', items: [{ cat: 'Top', name: '오버핏 그래픽 반팔' }, { cat: 'Bottom', name: '와이드 카고 쇼츠' }, { cat: 'Accessory', name: '볼캡 & 메신저 백' }] },
-                        'Sunny': { tag: '캠퍼스 캐주얼', image: 'korean_10s_men_casual_sunny.png', items: [{ cat: 'Top', name: '럭비 셔츠' }, { cat: 'Bottom', name: '와이드 생지 데님' }, { cat: 'Shoes', name: '컨버스 하이' }] }
+                        'Sunny': { tag: '캠퍼스 캐주얼', image: 'korean_10s_men_casual_sunny.png', items: [{ cat: 'Top', name: '럭비 셔츠' }, { cat: 'Bottom', name: '와이드 생지 데님' }, { cat: 'Shoes', name: '컨버스 하이' }] },
+                        guide: {
+                            title: '10대 스트릿 캐주얼 가이드',
+                            tips: ['오버핏 실루엣을 활용해 체형을 보완하면서도 힙한 무드를 연출해 보세요.', '무채색 코디에 원색 포인트 아이템(모자, 신발) 하나만 더해도 센스 있어 보입니다.', '카고 팬츠나 조거 팬츠는 활동성과 스타일을 동시에 잡을 수 있는 베스트 아이템입니다.']
+                        }
                     }
                 },
                 women: {
@@ -964,13 +967,25 @@
                 men: {
                     'University': {
                         'Hot': { tag: '캠퍼스 쿨링룩', image: 'korean_20s_men_uni_hot.png', items: [{ cat: 'Top', name: '린넨 반팔 셔츠' }, { cat: 'Bottom', name: '이지 웨어 팬츠' }] },
-                        'Sunny': { tag: '남친룩 정석', image: 'korean_20s_men_uni_hot.png', items: [{ cat: 'Top', name: '미니멀 라운드 니트' }, { cat: 'Bottom', name: '스트레이트 중청 데님' }, { cat: 'Shoes', name: '독일군 스니커즈' }] }
+                        'Sunny': { tag: '남친룩 정석', image: 'korean_20s_men_uni_hot.png', items: [{ cat: 'Top', name: '미니멀 라운드 니트' }, { cat: 'Bottom', name: '스트레이트 중청 데님' }, { cat: 'Shoes', name: '독일군 스니커즈' }] },
+                        guide: {
+                            title: '20대 캠퍼스 룩 가이드',
+                            tips: ['깔끔한 화이트 티셔츠나 옥스포드 셔츠는 실패 없는 캠퍼스 룩의 기본입니다.', '일자 핏의 중청 데님은 어떤 상의와도 잘 어울리는 만능 아이템입니다.', '과한 액세서리보다는 심플한 시계나 깔끔한 백팩으로 마무리하세요.']
+                        }
                     },
                     'Date': {
-                        'Sunny': { tag: '세련된 데이트룩', image: 'korean_20s_men_date_sunny.png', items: [{ cat: 'Outer', name: '미니멀 가죽 자켓' }, { cat: 'Top', name: '화이트 티셔츠' }, { cat: 'Bottom', name: '세미 와이드 슬랙스' }] }
+                        'Sunny': { tag: '세련된 데이트룩', image: 'korean_20s_men_date_sunny.png', items: [{ cat: 'Outer', name: '미니멀 가죽 자켓' }, { cat: 'Top', name: '화이트 티셔츠' }, { cat: 'Bottom', name: '세미 와이드 슬랙스' }] },
+                        guide: {
+                            title: '20대 로맨틱 데이트룩 가이드',
+                            tips: ['첫 데이트라면 너무 격식을 차리기보다 깔끔한 세미 캐주얼을 추천합니다.', '밝은 톤의 상의는 인상을 환하게 만들어 상대방에게 호감을 줄 수 있습니다.', '은은한 향수 한 방울로 매력을 더해 보세요.']
+                        }
                     },
                     'Sports': {
-                        'Hot': { tag: '스타일리쉬 애슬레저', image: 'korean_20s_men_sports_hot.png', items: [{ cat: 'Top', name: '기능성 오버핏 티셔츠' }, { cat: 'Bottom', name: '바스락 조거 팬츠' }, { cat: 'Shoes', name: '러닝용 스니커즈' }] }
+                        'Hot': { tag: '스타일리쉬 애슬레저', image: 'korean_20s_men_sports_hot.png', items: [{ cat: 'Top', name: '기능성 오버핏 티셔츠' }, { cat: 'Bottom', name: '바스락 조거 팬츠' }, { cat: 'Shoes', name: '러닝용 스니커즈' }] },
+                        guide: {
+                            title: '20대 애슬레저 룩 가이드',
+                            tips: ['기능성 소재의 옷도 핏에 신경 쓰면 일상복으로도 손색없는 고프코어 룩이 됩니다.', '레이어드 티셔츠를 활용해 밑단에 포인트를 주면 스타일 지수가 올라갑니다.', '러닝화는 화려한 디자인보다 심플한 모노톤이 코디하기 쉽습니다.']
+                        }
                     }
                 },
                 women: {
@@ -1008,9 +1023,21 @@
             },
             '40s': {
                 men: {
-                    'Premium': { 'Sunny': { tag: '럭셔리 비즈니스', image: 'korean_40s_men_premium_sunny.png', items: [{ cat: 'Outer', name: '테일러드 블레이저' }, { cat: 'Top', name: '프리미엄 코튼 셔츠' }, { cat: 'Shoes', name: '가죽 몽크 스트랩' }] } },
+                    'Premium': {
+                        'Sunny': { tag: '럭셔리 비즈니스', image: 'korean_40s_men_premium_sunny.png', items: [{ cat: 'Outer', name: '테일러드 블레이저' }, { cat: 'Top', name: '프리미엄 코튼 셔츠' }, { cat: 'Shoes', name: '가죽 몽크 스트랩' }] },
+                        guide: {
+                            title: '40대 프리미엄 비즈니스 가이드',
+                            tips: ['중후한 매력을 돋보이게 하는 수입 원단 블레이저를 활용해 보세요.', '드레스 셔츠는 항상 빳빳하게 다려진 상태를 유지하는 것이 핵심입니다.', '벨트와 구두의 색상을 맞추는 것은 클래식 슈트의 기본 공식입니다.']
+                        }
+                    },
                     'Leisure': { 'Chilly': { tag: '주말 럭셔리 레저룩', image: 'korean_40s_men_leisure_chilly.png', items: [{ cat: 'Outer', name: '캐시미어 바시티 자켓' }, { cat: 'Bottom', name: '테이퍼드 치노' }] } },
-                    'Golf': { 'Sunny': { tag: '클래식 골프룩', image: 'korean_40s_men_golf_sunny.png', items: [{ cat: 'Top', name: '피케 셔츠' }, { cat: 'Bottom', name: '스트레치 골프 팬츠' }] } }
+                    'Golf': {
+                        'Sunny': { tag: '클래식 골프룩', image: 'korean_40s_men_golf_sunny.png', items: [{ cat: 'Top', name: '피케 셔츠' }, { cat: 'Bottom', name: '스트레치 골프 팬츠' }] },
+                        guide: {
+                            title: '40대 필드 룩 가이드',
+                            tips: ['필드 위에서는 평소보다 과감한 컬러의 상의를 선택해도 좋습니다.', '스윙에 방해가 되지 않는 고기능성 스트레치 소재를 우선시하세요.', '클래식한 디자인의 가죽 골프화로 품격을 더해 보세요.']
+                        }
+                    }
                 },
                 women: {
                     'Premium': { 'Sunny': { tag: '프리미엄 비즈니스', image: 'korean_40s_women_premium_sunny.png', items: [{ cat: 'Outer', name: '테일러드 블레이저' }, { cat: 'Top', name: '실크 블라우스' }, { cat: 'Bottom', name: '슬림 슬랙스' }] } }
@@ -1018,9 +1045,27 @@
             },
             '50s': {
                 men: {
-                    'Classic': { 'Sunny': { tag: '클래식 포멀룩', image: 'korean_50s_men_classic_sunny.png', items: [{ cat: 'Top', name: '프리미엄 하이 트위스트 셔츠' }, { cat: 'Bottom', name: '맞춤형 프레스드 울 팬츠' }] } },
-                    'Active': { 'Hot': { tag: '헬시 액티브웨어', image: 'korean_50s_men_active_hot.png', items: [{ cat: 'Top', name: '기능성 집업 티셔츠' }, { cat: 'Bottom', name: '드로우스트링 테크 팬츠' }] } },
-                    'Travel': { 'Sunny': { tag: '세련된 여행가 룩', image: 'korean_50s_men_travel_sunny.png', items: [{ cat: 'Outer', name: '경량 윈드브레이커' }, { cat: 'Accessory', name: '파나마 햇' }] } }
+                    'Classic': {
+                        'Sunny': { tag: '클래식 포멀룩', image: 'korean_50s_men_classic_sunny.png', items: [{ cat: 'Top', name: '프리미엄 하이 트위스트 셔츠' }, { cat: 'Bottom', name: '맞춤형 프레스드 울 팬츠' }] },
+                        guide: {
+                            title: '50대 클래식 스타일링 가이드',
+                            tips: ['나이가 들수록 옷의 소재감이 중요합니다. 실크나 캐시미어 혼방 소재를 선택하세요.', '중명도의 그레이나 브라운 톤은 신뢰감 있고 부드러운 인상을 줍니다.', '스카프나 행커치프 하나로 훨씬 감각적인 중년의 멋을 낼 수 있습니다.']
+                        }
+                    },
+                    'Active': {
+                        'Hot': { tag: '헬시 액티브웨어', image: 'korean_50s_men_active_hot.png', items: [{ cat: 'Top', name: '기능성 집업 티셔츠' }, { cat: 'Bottom', name: '드로우스트링 테크 팬츠' }] },
+                        guide: {
+                            title: '50대 건강한 액티브룩 가이드',
+                            tips: ['가벼운 등산이나 산책 시 화사한 색상의 바람막이를 입으면 생기 있어 보입니다.', '무릎이나 관절을 보호할 수 있는 쿠셔닝 좋은 운동화는 필수입니다.', '흡습 속건 기능성 웨어를 레이어드해 체온 조절에 유의하세요.']
+                        }
+                    },
+                    'Travel': {
+                        'Sunny': { tag: '세련된 여행가 룩', image: 'korean_50s_men_travel_sunny.png', items: [{ cat: 'Outer', name: '경량 윈드브레이커' }, { cat: 'Accessory', name: '파나마 햇' }] },
+                        guide: {
+                            title: '50대 여행지 스타일링 가이드',
+                            tips: ['활동하기 편한 면 혼방 팬츠와 가볍게 걸칠 수 있는 베스트가 유용합니다.', '자외선 차단을 위해 멋진 선글라스와 파나마 햇을 준비하세요.', '오래 걸어도 편안한 가죽 로퍼나 컴포트 슈즈를 추천합니다.']
+                        }
+                    }
                 },
                 women: {
                     'Travel': { 'Hot': { tag: '하이엔드 트래블룩', image: 'korean_50s_women_travel_hot.png', items: [{ cat: 'Top', name: '린넨 롱 튜닉' }, { cat: 'Accessory', name: '실크 스카프' }] } },
