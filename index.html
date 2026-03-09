@@ -13,12 +13,31 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>30대 직장인 데일리 코디 추천 | 내일 뭐 입지? 스마트 오피스룩 가이드</title>
+    <title>오늘의 날씨 코디 - 10대부터 50대까지 전 연령대 맞춤 날씨별 옷차림 추천</title>
     <meta name="description"
-        content="30대 화이트칼라 직장인을 위한 날씨 맞춤형 데일리 코디 추천 서비스입니다. 비즈니스 캐주얼부터 미니멀룩까지, 스마트한 오피스룩 스타일링 가이드를 확인하세요.">
+        content="매일 변하는 날씨, 오늘 뭐 입지? 10대 등교룩부터 20대 데이트룩, 30대 오피스룩, 40-50대 프리미엄 룩까지! 당신의 연령과 상황에 최적화된 날씨별 코디를 인공지능이 추천해 드립니다.">
+    <meta name="keywords" content="날씨 코디, 전연령대 코디, 오피스룩, 데이트룩, 등교룩, 골프룩, 기온별 옷차림, 데일리룩 추천">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;700&display=swap"
         rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "오늘의 날씨 코디",
+      "description": "10대부터 50대까지 연령대별, 상황별 날씨 맞춤형 코디 추천 서비스",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "오늘의 날씨 코디 팀"
+      }
+    }
+    </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6635015066599694"
         crossorigin="anonymous"></script>
     <style>
@@ -124,7 +143,91 @@
         .toggle-btn.active {
             background: var(--accent-blue);
             color: var(--primary-bg);
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Combined Selectors Area */
+        .selection-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .selection-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .selection-label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .age-tabs {
+            display: flex;
+            background: var(--secondary-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 0.3rem;
+            gap: 0.2rem;
+        }
+
+        .age-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .age-btn.active {
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+            box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+        }
+
+        .occasion-chips {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .chip {
+            padding: 0.5rem 1.2rem;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .chip.active {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            color: white;
+            box-shadow: 0 4px 12px rgba(129, 140, 248, 0.3);
         }
 
         .main-container {
@@ -344,6 +447,67 @@
             color: var(--text-main);
         }
 
+        /* Info Sections for AdSense */
+        .info-section {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .info-card p,
+        .info-card li {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .how-it-works {
+            list-style: none;
+            padding: 0;
+        }
+
+        .how-it-works li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .how-it-works span {
+            background: var(--accent-blue);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 900px) {
             .outfit-display {
                 grid-template-columns: 1fr;
@@ -552,16 +716,40 @@
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
         </button>
-        <nav style="margin-bottom: 1rem; display: flex; gap: 1.5rem;">
+        <nav style="margin-bottom: 1.5rem; display: flex; gap: 1.5rem;">
             <a href="#"
                 style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 600;">홈</a>
             <a href="#styling-guide" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">스타일
                 가이드</a>
             <a href="#fashion-form" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">맞춤 신청</a>
+            <a href="#about-section" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">소개</a>
+            <a href="#how-it-works-section" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem;">이용
+                방법</a>
         </nav>
-        <div class="gender-toggle" id="gender-toggle-area">
-            <button class="toggle-btn active" id="btn-men" onclick="setGender('men')">30대 남성</button>
-            <button class="toggle-btn" id="btn-women" onclick="setGender('women')">30대 여성</button>
+
+        <div class="selection-area">
+            <!-- Age Selection -->
+            <div class="selection-row">
+                <span class="selection-label">연령대</span>
+                <div class="age-tabs" id="age-tabs">
+                    <button class="age-btn" onclick="setAge('10s')">10대</button>
+                    <button class="age-btn" onclick="setAge('20s')">20대</button>
+                    <button class="age-btn active" onclick="setAge('30s')">30대</button>
+                    <button class="age-btn" onclick="setAge('40s')">40대</button>
+                    <button class="age-btn" onclick="setAge('50s')">50대</button>
+                </div>
+            </div>
+
+            <!-- Gender & Occasion Selection -->
+            <div class="selection-row">
+                <div class="gender-toggle" id="gender-toggle-area" style="margin-bottom: 0;">
+                    <button class="toggle-btn active" id="btn-men" onclick="setGender('men')">남성</button>
+                    <button class="toggle-btn" id="btn-women" onclick="setGender('women')">여성</button>
+                </div>
+                <div class="occasion-chips" id="occasion-chips">
+                    <!-- Occasion chips will be injected here -->
+                </div>
+            </div>
         </div>
 
         <div class="header-content">
@@ -600,8 +788,28 @@
                 <div class="outfit-image-container" id="outfit-image">
                     <!-- Image will be injected -->
                 </div>
+                <div class="outfit-info" id="outfit-info">
+                    <!-- JavaScript will populate here -->
+                </div>
                 <ul class="outfit-list" id="outfit-list">
                     <!-- Items will be injected -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- New Value-Add Sections for AdSense -->
+        <section class="info-section">
+            <div class="info-card" id="about-section">
+                <h3>💡 서비스 소개 (About)</h3>
+                <p>우리 서비스는 기상청 및 글로벌 기상 데이터(Open-Meteo)를 실시간으로 분석하여, 사용자님의 <strong>연령대와 현재 상황</strong>에 가장 적합한 패션 스타일을
+                    제안합니다. 단순한 기온 정보를 넘어, 활동성과 트렌드를 고려한 세분화된 추천 시스템을 지향합니다.</p>
+            </div>
+            <div class="info-card" id="how-it-works-section">
+                <h3>🛠 이용 방법 (How It Works)</h3>
+                <ul class="how-it-works">
+                    <li><span>1</span> <strong>연령대 선택</strong>: 자신에게 맞는 나이대를 선택하세요 (10대 ~ 50대).</li>
+                    <li><span>2</span> <strong>상황(Occasion) 선택</strong>: 등교, 출근, 데이트, 운동 등 현재 상황을 필터링합니다.</li>
+                    <li><span>3</span> <strong>맞춤 코디 확인</strong>: 현재 날씨에 최적화된 아이템 조합과 실제 착용 예시 이미지를 확인하세요.</li>
                 </ul>
             </div>
         </section>
@@ -688,114 +896,97 @@
         const LON = 126.9780;
 
         let currentGender = 'men';
+        let currentAge = '30s';
+        let currentOccasion = 'Office';
         let selectedDayIndex = 0;
         let weatherForecast = [];
 
+        const ageOccasions = {
+            '10s': ['School', 'Casual'],
+            '20s': ['University', 'Date', 'Sports'],
+            '30s': ['Office', 'Date', 'Social'],
+            '40s': ['Premium', 'Leisure', 'Golf'],
+            '50s': ['Classic', 'Active', 'Travel']
+        };
+
         const outfits = {
-            men: {
-                'Hot': {
-                    tag: 'Summer Office',
-                    image: 'korean_summer_office_30m_1772599117836.png',
-                    items: [
-                        { cat: 'Top', name: '린넨 셔츠 (스카이 블루)' },
-                        { cat: 'Bottom', name: '베이지 시어서커 슬랙스' },
-                        { cat: 'Shoes', name: '가죽 로퍼' },
-                        { cat: 'Accessory', name: '메탈 스트랩 워치' }
-                    ]
+            '10s': {
+                men: {
+                    'School': {
+                        'Hot': { tag: '스쿨 하계 유니폼', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '반팔 쿨원단 셔츠' }, { cat: 'Bottom', name: '네이비 하계 슬랙스' }, { cat: 'Shoes', name: '화이트 스니커즈' }] },
+                        'Sunny': { tag: '클래식 교복 스타일', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '옥스포드 화이트 셔츠' }, { cat: 'Vest', name: 'v넥 네이비 니트 조끼' }, { cat: 'Bottom', name: '그레이 핏 슬랙스' }] },
+                        'Rainy': { tag: '비 오는 날 등교룩', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Outer', name: '생활복 후드 집업' }, { cat: 'Bottom', name: '방수 기능성 슬랙스' }, { cat: 'Shoes', name: '검정 어글리 슈즈' }] },
+                        'Cold': { tag: '동복 레이어드', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Outer', name: '네이비 교복 마이' }, { cat: 'Padding', name: '숏 패딩 점퍼' }, { cat: 'Bottom', name: '방풍 울 슬랙스' }] },
+                        'Chilly': { tag: '간절기 셔츠 코디', image: 'korean_10s_men_school_1772605000001_1773019504501.png', items: [{ cat: 'Top', name: '긴팔 옥스포드 셔츠' }, { cat: 'Bottom', name: '그레이 코튼 팬츠' }, { cat: 'Shoes', name: '반스 스타일 스니커즈' }] }
+                    },
+                    'Casual': {
+                        'Hot': { tag: '스트릿 썸머룩', image: 'placeholder.png', items: [{ cat: 'Top', name: '오버핏 그래픽 반팔' }, { cat: 'Bottom', name: '와이드 카고 쇼츠' }, { cat: 'Accessory', name: '볼캡 & 메신저 백' }] },
+                        'Sunny': { tag: '캠퍼스 캐주얼', image: 'placeholder.png', items: [{ cat: 'Top', name: '럭비 셔츠' }, { cat: 'Bottom', name: '와이드 생지 데님' }, { cat: 'Shoes', name: '컨버스 하이' }] }
+                    }
                 },
-                'Sunny': {
-                    tag: 'Premium Business',
-                    image: 'korean_autumn_office_30m_1772599142299.png',
-                    items: [
-                        { cat: 'Outer', name: '라이트 블레이저' },
-                        { cat: 'Top', name: '옥스포드 드레스 셔츠' },
-                        { cat: 'Bottom', name: '네이비 테이퍼드 슬랙스' },
-                        { cat: 'Shoes', name: '브라운 더비 슈즈' }
-                    ]
-                },
-                'Rainy': {
-                    tag: 'Urban Tech',
-                    image: 'korean_rainy_office_30m_1772599245049.png',
-                    items: [
-                        { cat: 'Outer', name: '베이지 트렌치 코트' },
-                        { cat: 'Top', name: '화이트 드레스 셔츠' },
-                        { cat: 'Bottom', name: '네이비 워터프루프 팬츠' },
-                        { cat: 'Shoes', name: '검정 더비 슈즈' }
-                    ]
-                },
-                'Cold': {
-                    tag: 'Winter Classic',
-                    image: 'korean_winter_office_30m_1772599227140.png',
-                    items: [
-                        { cat: 'Outer', name: '차콜 캐시미어 코트' },
-                        { cat: 'Top', name: '블랙 터틀넥 니트' },
-                        { cat: 'Bottom', name: '다크 기모 울 슬랙스' },
-                        { cat: 'Shoes', name: '가죽 첼시 부츠' }
-                    ]
-                },
-                'Chilly': {
-                    tag: 'Smart Layering',
-                    image: 'autumn_outfit_30m_1772527816047.png',
-                    items: [
-                        { cat: 'Outer', name: '퀼팅 베스트' },
-                        { cat: 'Top', name: '스트라이프 셔츠' },
-                        { cat: 'Bottom', name: '그래이 치노 패밀리' },
-                        { cat: 'Shoes', name: '스웨이드 로퍼' }
-                    ]
+                women: {
+                    'School': { 'Sunny': { tag: '프레피룩 교복', image: 'placeholder.png', items: [{ cat: 'Top', name: '리본 타이 블라우스' }, { cat: 'Bottom', name: '체크 플리츠 스커트' }] } },
+                    'Casual': { 'Hot': { tag: '러블리 캐주얼', image: 'placeholder.png', items: [{ cat: 'Top', name: '크롭 배색 카디건' }, { cat: 'Bottom', name: '연청 와이드 팬츠' }] } }
                 }
             },
-            women: {
-                'Hot': {
-                    tag: 'Summer Chic',
-                    image: 'korean_female_summer_office_30s_1772599653811.png',
-                    items: [
-                        { cat: 'Top', name: '민소매 실크 블라우스' },
-                        { cat: 'Bottom', name: '린넨 쿨 와이드 슬랙스' },
-                        { cat: 'Shoes', name: '스트랩 샌들 힐' },
-                        { cat: 'Accessory', name: '심플 골드 브레이슬릿' }
-                    ]
+            '20s': {
+                men: {
+                    'University': {
+                        'Hot': { tag: '캠퍼스 쿨링룩', image: 'korean_20s_men_uni_hot.png', items: [{ cat: 'Top', name: '린넨 반팔 셔츠' }, { cat: 'Bottom', name: '이지 웨어 팬츠' }] },
+                        'Sunny': { tag: '남친룩 정석', image: 'korean_20s_men_uni_hot.png', items: [{ cat: 'Top', name: '미니멀 라운드 니트' }, { cat: 'Bottom', name: '스트레이트 중청 데님' }, { cat: 'Shoes', name: '독일군 스니커즈' }] }
+                    },
+                    'Date': {
+                        'Sunny': { tag: '세련된 데이트룩', image: 'placeholder.png', items: [{ cat: 'Outer', name: '미니멀 가죽 자켓' }, { cat: 'Top', name: '화이트 티셔츠' }, { cat: 'Bottom', name: '세미 와이드 슬랙스' }] }
+                    },
+                    'Sports': {
+                        'Hot': { tag: '스타일리쉬 애슬레저', image: 'placeholder.png', items: [{ cat: 'Top', name: '기능성 오버핏 티셔츠' }, { cat: 'Bottom', name: '바스락 조거 팬츠' }, { cat: 'Shoes', name: '러닝용 스니커즈' }] }
+                    }
                 },
-                'Sunny': {
-                    tag: 'Modern Office',
-                    image: 'korean_female_autumn_office_30s_1772599672322.png',
-                    items: [
-                        { cat: 'Top', name: '타이 블라우스' },
-                        { cat: 'Outer', name: '슬림핏 자켓' },
-                        { cat: 'Bottom', name: 'A라인 미디 스커트' },
-                        { cat: 'Shoes', name: '스틸레토 힐' }
-                    ]
-                },
-                'Rainy': {
-                    tag: 'Stylish Rainy',
-                    image: 'women_rainy_office.png',
-                    items: [
-                        { cat: 'Outer', name: '네이비 후드 트렌치' },
-                        { cat: 'Top', name: '면 반팔 니트' },
-                        { cat: 'Bottom', name: '치마 바지 (큐롯)' },
-                        { cat: 'Shoes', name: '레인 펌프스' }
-                    ]
-                },
-                'Cold': {
-                    tag: 'Cozy Professional',
-                    image: 'women_cold_office.png',
-                    items: [
-                        { cat: 'Outer', name: '헤링본 울 코트' },
-                        { cat: 'Top', name: '캐시미어 반목 니트' },
-                        { cat: 'Bottom', name: '울 혼방 와이드 팬츠' },
-                        { cat: 'Shoes', name: '삭스 부츠' }
-                    ]
-                },
-                'Chilly': {
-                    tag: 'Fall Layering',
-                    image: 'women_chilly_office.png',
-                    items: [
-                        { cat: 'Outer', name: '카멜 롱 가디건' },
-                        { cat: 'Top', name: '라벤더 셔츠' },
-                        { cat: 'Bottom', name: '펜슬 체크 스커트' },
-                        { cat: 'Shoes', name: '태슬 로퍼' }
-                    ]
+                women: {
+                    'University': { 'Sunny': { tag: '새내기 캠퍼스룩', image: 'placeholder.png', items: [{ cat: 'Top', name: '스트라이프 셔츠' }, { cat: 'Bottom', name: '롱 플레어 스커트' }] } },
+                    'Date': { 'Sunny': { tag: '페미닌 데이트룩', image: 'placeholder.png', items: [{ cat: 'Dress', name: '플로럴 쉬폰 원피스' }, { cat: 'Outer', name: '슬림 가디건' }] } },
+                    'Sports': { 'Hot': { tag: '스타일리쉬 애슬레저', image: 'korean_20s_women_sports_hot.png', items: [{ cat: 'Top', name: '기능성 오버핏 티셔츠' }, { cat: 'Bottom', name: '바스락 조거 팬츠' }, { cat: 'Shoes', name: '러닝용 스니커즈' }] } }
                 }
             },
+            '30s': {
+                men: {
+                    'Office': {
+                        'Hot': { tag: '쿨비즈 오피스룩', image: 'korean_summer_office_30m_1772599117836.png', items: [{ cat: 'Top', name: '린넨 셔츠 (스카이 블루)' }, { cat: 'Bottom', name: '베이지 시어서커 슬랙스' }, { cat: 'Shoes', name: '가죽 로퍼' }] },
+                        'Sunny': { tag: '프리미엄 비즈니스', image: 'korean_autumn_office_30m_1772599142299.png', items: [{ cat: 'Outer', name: '라이트 블레이저' }, { cat: 'Top', name: '옥스포드 드레스 셔츠' }, { cat: 'Bottom', name: '네이비 테이퍼드 슬랙스' }] },
+                        'Rainy': { tag: '어반 테크닉', image: 'korean_rainy_office_30m_1772599245049.png', items: [{ cat: 'Outer', name: '베이지 트렌치 코트' }, { cat: 'Bottom', name: '네이비 워터프루프 팬츠' }] },
+                        'Cold': { tag: '윈터 클래식', image: 'korean_winter_office_30m_1772599227140.png', items: [{ cat: 'Outer', name: '차콜 캐시미어 코트' }, { cat: 'Top', name: '블랙 터틀넥 니트' }] },
+                        'Chilly': { tag: '스마트 레이어드', image: 'autumn_outfit_30m_1772527816047.png', items: [{ cat: 'Outer', name: '퀼팅 베스트' }, { cat: 'Top', name: '스트라이프 셔츠' }] }
+                    },
+                    'Date': { 'Sunny': { tag: '로맨틱 디너룩', image: 'placeholder.png', items: [{ cat: 'Outer', name: '체크 블레이저' }, { cat: 'Top', name: '터틀넥 니트' }, { cat: 'Bottom', name: '생지 데님 팬츠' }] } },
+                    'Social': { 'Sunny': { tag: '스마트 소셜 스타일', image: 'korean_30s_men_social_sunny.png', items: [{ cat: 'Top', name: '미니멀 라운드 니트' }, { cat: 'Bottom', name: '그레이 치노 팬츠' }, { cat: 'Shoes', name: '독일군 스니커즈' }] } }
+                },
+                women: {
+                    'Office': {
+                        'Hot': { tag: '썸머 시크룩', image: 'korean_female_summer_office_30s_1772599653811.png', items: [{ cat: 'Top', name: '민소매 실크 블라우스' }, { cat: 'Bottom', name: '린넨 쿨 와이드 슬랙스' }] },
+                        'Sunny': { tag: '모던 오피스', image: 'korean_female_autumn_office_30s_1772599672322.png', items: [{ cat: 'Top', name: '타이 블라우스' }, { cat: 'Outer', name: '슬림핏 자켓' }] },
+                        'Rainy': { tag: '스타일리쉬 레니룩', image: 'women_rainy_office.png', items: [{ cat: 'Outer', name: '네이비 후드 트렌치' }, { cat: 'Shoes', name: '레인 펌프스' }] },
+                        'Cold': { tag: '코지 프로페셔널', image: 'women_cold_office.png', items: [{ cat: 'Outer', name: '헤링본 울 코트' }, { cat: 'Bottom', name: '울 혼방 와이드 팬츠' }] },
+                        'Chilly': { tag: '폴 레이어드', image: 'women_chilly_office.png', items: [{ cat: 'Outer', name: '카멜 롱 가디건' }, { cat: 'Top', name: '라벤더 셔츠' }] }
+                    }
+                }
+            },
+            '40s': {
+                men: {
+                    'Premium': { 'Sunny': { tag: '럭셔리 비즈니스', image: 'placeholder.png', items: [{ cat: 'Outer', name: '테일러드 블레이저' }, { cat: 'Top', name: '프리미엄 코튼 셔츠' }, { cat: 'Shoes', name: '가죽 몽크 스트랩' }] } },
+                    'Leisure': { 'Chilly': { tag: '주말 럭셔리 레저룩', image: 'korean_40s_men_leisure_chilly.png', items: [{ cat: 'Outer', name: '캐시미어 바시티 자켓' }, { cat: 'Bottom', name: '테이퍼드 치노' }] } },
+                    'Golf': { 'Sunny': { tag: '클래식 골프룩', image: 'placeholder.png', items: [{ cat: 'Top', name: '피케 셔츠' }, { cat: 'Bottom', name: '스트레치 골프 팬츠' }] } }
+                },
+                women: {
+                    'Premium': { 'Sunny': { tag: '프리미엄 비즈니스', image: 'korean_40s_women_premium_sunny.png', items: [{ cat: 'Outer', name: '테일러드 블레이저' }, { cat: 'Top', name: '실크 블라우스' }, { cat: 'Bottom', name: '슬림 슬랙스' }] } }
+                }
+            },
+            '50s': {
+                men: {
+                    'Classic': { 'Sunny': { tag: '클래식 포멀룩', image: 'placeholder.png', items: [{ cat: 'Top', name: '프리미엄 하이 트위스트 셔츠' }, { cat: 'Bottom', name: '맞춤형 프레스드 울 팬츠' }] } },
+                    'Active': { 'Hot': { tag: '헬시 액티브웨어', image: 'placeholder.png', items: [{ cat: 'Top', name: '기능성 집업 티셔츠' }, { cat: 'Bottom', name: '드로우스트링 테크 팬츠' }] } },
+                    'Travel': { 'Sunny': { tag: '세련된 여행가 룩', image: 'placeholder.png', items: [{ cat: 'Outer', name: '경량 윈드브레이커' }, { cat: 'Accessory', name: '파나마 햇' }] } }
+                }
+            }
         };
 
         const weatherIcons = {
@@ -844,10 +1035,44 @@
             `).join('');
         }
 
+        function setGender(gender) {
+            currentGender = gender;
+            document.getElementById('btn-men').classList.toggle('active', gender === 'men');
+            document.getElementById('btn-women').classList.toggle('active', gender === 'women');
+            updateMainUI();
+        }
+
+        function setAge(age) {
+            currentAge = age;
+            document.querySelectorAll('.age-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.textContent.includes(age.replace('s', '')));
+            });
+            updateOccasionChips();
+            // Default to first occasion when age changes
+            currentOccasion = ageOccasions[age][0];
+            updateMainUI();
+        }
+
+        function updateOccasionChips() {
+            const container = document.getElementById('occasion-chips');
+            const occasions = ageOccasions[currentAge];
+            container.innerHTML = occasions.map(occ => `
+                <div class="chip ${occ === currentOccasion ? 'active' : ''}" onclick="setOccasion('${occ}')">${occ}</div>
+            `).join('');
+        }
+
+        function setOccasion(occ) {
+            currentOccasion = occ;
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.classList.toggle('active', chip.textContent === occ);
+            });
+            updateMainUI();
+        }
+
         function updateMainUI() {
+            if (weatherForecast.length === 0) return;
             const day = weatherForecast[selectedDayIndex];
             const titles = ['내일의 추천 코디', '모레의 추천 코디', '글피의 추천 코디'];
-
             document.getElementById('day-title').textContent = titles[selectedDayIndex];
 
             // Update Quick Weather in Header
@@ -855,41 +1080,40 @@
             document.getElementById('quick-temp').textContent = `${day.max}°C / ${day.min}°C`;
             document.getElementById('quick-desc').textContent = getDayDesc(day);
 
-            // Granular categorization logic
+            // Determine weather type
             let type = 'Sunny';
-            if (day.rain > 40 || (day.code >= 51 && day.code <= 67)) {
-                type = 'Rainy';
-            } else if (day.max < 7) {
-                type = 'Cold';
-            } else if (day.max < 17) {
-                type = 'Chilly';
-            } else if (day.max >= 25) {
-                type = 'Hot';
-            } else {
-                type = 'Sunny';
-            }
+            if (day.rain > 50 || (day.code >= 51 && day.code <= 67)) type = 'Rainy';
+            else if (day.max > 25) type = 'Hot';
+            else if (day.max < 10) type = 'Cold';
+            else if (day.max < 18) type = 'Chilly';
 
-            const outfit = outfits[currentGender][type];
-            const fallback = currentGender === 'men'
+            // Safe data retrieval with deep fallbacks
+            const ageData = outfits[currentAge] || outfits['30s'];
+            const genderData = ageData[currentGender] || ageData['men'];
+            const occasionData = genderData[currentOccasion] || genderData[Object.keys(genderData)[0]];
+            const recommendation = occasionData[type] || occasionData['Sunny'] || Object.values(occasionData)[0];
+
+            document.getElementById('outfit-tag').textContent = recommendation.tag;
+            const fallbackImg = currentGender === 'men'
                 ? 'https://images.unsplash.com/photo-1543852084-298319e71fd1?auto=format&fit=crop&w=500&q=80'
                 : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80';
+            document.getElementById('outfit-image').innerHTML = `<img src="${recommendation.image}" alt="${recommendation.tag}" onerror="this.src='${fallbackImg}'">`;
 
-            document.getElementById('outfit-tag').textContent = outfit.tag;
-            document.getElementById('outfit-image').innerHTML = `<img src="${outfit.image}" alt="Outfit Recommendation" onerror="this.src='${fallback}'">`;
-            document.getElementById('outfit-list').innerHTML = outfit.items.map(item => `
+            const list = document.getElementById('outfit-items');
+            list.innerHTML = recommendation.items.map(item => `
                 <li>
                     <span class="item-cat">${item.cat}</span>
                     <span class="item-val">${item.name}</span>
                 </li>
             `).join('');
 
-            // Reload Disqus for the specific combination of Gender + Date
+            // Reload Disqus
             reloadDisqus();
         }
 
         function reloadDisqus() {
             const pageUrl = window.location.href.split('#')[0];
-            const pageId = `${currentGender}-day${selectedDayIndex}`;
+            const pageId = `${currentAge}-${currentGender}-${currentOccasion}-day${selectedDayIndex}`;
 
             if (typeof DISQUS !== 'undefined') {
                 DISQUS.reset({
@@ -902,6 +1126,13 @@
             }
         }
 
+        function getDayDesc(day) {
+            if (day.code >= 51 && day.code <= 67) return '비 소식이 있어 우산이 필요합니다.';
+            if (day.code >= 71 && day.code <= 77) return '눈이 올 수 있으니 미끄러움에 주의하세요.';
+            if (day.max >= 22) return '햇살이 따스한 기분 좋은 날씨입니다.';
+            return '선선하여 코디를 즐기기 좋은 날씨입니다.';
+        }
+
         // Initial Disqus Load
         (function () {
             var d = document, s = d.createElement('script');
@@ -910,20 +1141,7 @@
             (d.head || d.body).appendChild(s);
         })();
 
-        function getDayDesc(day) {
-            if (day.code >= 51 && day.code <= 67) return '비 소식이 있어 우산이 필요합니다.';
-            if (day.code >= 71 && day.code <= 77) return '눈이 올 수 있으니 미끄러움에 주의하세요.';
-            if (day.max >= 22) return '햇살이 따스한 기분 좋은 날씨입니다.';
-            return '선선하여 오피스룩을 즐기기 좋은 날씨입니다.';
-        }
-
-        window.setGender = (gender) => {
-            currentGender = gender;
-            document.getElementById('btn-men').classList.toggle('active', gender === 'men');
-            document.getElementById('btn-women').classList.toggle('active', gender === 'women');
-            updateMainUI();
-        };
-
+        // Theme Toggle
         window.toggleTheme = () => {
             const body = document.body;
             const isLight = body.classList.toggle('light-mode');
@@ -934,21 +1152,19 @@
         function updateThemeIcon(isLight) {
             const icon = document.getElementById('theme-icon');
             if (isLight) {
-                // Sun icon
                 icon.innerHTML = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
                 icon.setAttribute('viewBox', '0 0 24 24');
                 icon.style.stroke = 'var(--accent-blue)';
                 icon.style.strokeWidth = '2';
                 icon.style.fill = 'none';
             } else {
-                // Moon icon
                 icon.innerHTML = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
                 icon.style.fill = 'var(--accent-blue)';
                 icon.style.stroke = 'none';
             }
         }
 
-        // Initialize Theme
+        // Initialize
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
@@ -961,6 +1177,7 @@
             updateMainUI();
         };
 
+        updateOccasionChips();
         window.addEventListener('load', fetchWeather);
     </script>
 </body>
