@@ -533,6 +533,18 @@
             background: var(--secondary-bg);
             border-radius: 2px;
             overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .column-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .column-item:hover .column-thumb img {
+            transform: scale(1.05);
         }
 
         .column-item h4 {
@@ -541,6 +553,21 @@
             line-height: 1.4;
             color: var(--text-main);
             font-weight: 700;
+            margin-bottom: 1.2rem;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .column-item h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .column-item h4:hover {
+            color: var(--accent-blue);
+            text-decoration: underline;
         }
 
         .column-item p {
@@ -873,21 +900,33 @@
 
         <!-- Weekly Fashion Column SECTION (FOR ADSENSE) -->
         <section class="fashion-column" id="fashion-column">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 2rem;">Fashion Column</h2>
+            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 4rem;">Fashion Column</h2>
             <div class="column-grid">
                 <div class="column-item">
-                    <div class="column-thumb"></div>
-                    <h4>환절기 레이어링의 미학: 20도 안팎의 날씨를 우아하게 견디는 방법</h4>
+                    <a href="https://www.vogue.co.kr/category/fashion/" target="_blank" style="text-decoration: none;">
+                        <div class="column-thumb">
+                            <img src="fashion_layering_1773279874376.png" alt="Spring/Autumn Layering">
+                        </div>
+                    </a>
+                    <h4><a href="https://www.vogue.co.kr/category/fashion/" target="_blank">환절기 레이어링의 미학: 20도 안팎의 날씨를 우아하게 견디는 방법</a></h4>
                     <p>낮과 밤의 기온 차가 벌어지는 춘추절기에는 소재의 혼방율을 체크하는 것이 핵심입니다. 가벼운 코튼 니트와 실크 스카프의 조합은 체온 유지와 스타일을 동시에 잡는 스마트한 전략입니다.</p>
                 </div>
                 <div class="column-item">
-                    <div class="column-thumb"></div>
-                    <h4>캡슐 워드롭: 미니멀리스트를 위한 한 달 코디 공식</h4>
+                    <a href="https://www.gqkorea.co.kr/category/fashion/" target="_blank" style="text-decoration: none;">
+                        <div class="column-thumb">
+                            <img src="fashion_capsule_1773280002638.png" alt="Capsule Wardrobe">
+                        </div>
+                    </a>
+                    <h4><a href="https://www.gqkorea.co.kr/category/fashion/" target="_blank">캡슐 워드롭: 미니멀리스트를 위한 한 달 코디 공식</a></h4>
                     <p>옷장은 가볍게, 스타일은 풍성하게. 단 10개의 기본 아이템만으로 30가지 이상의 조합을 만들어내는 캡슐 워드롭의 기본 원칙을 소개합니다. 기본에 충실한 것이 가장 강력한 트렌드입니다.</p>
                 </div>
                 <div class="column-item">
-                    <div class="column-thumb"></div>
-                    <h4>비즈니스 캐주얼의 재정의: TPO를 넘나드는 유연한 오피스룩</h4>
+                    <a href="https://www.elle.co.kr/fashion" target="_blank" style="text-decoration: none;">
+                        <div class="column-thumb">
+                            <img src="fashion_biz_casual_1773280090319.png" alt="Business Casual">
+                        </div>
+                    </a>
+                    <h4><a href="https://www.elle.co.kr/fashion" target="_blank">비즈니스 캐주얼의 재정의: TPO를 넘나드는 유연한 오피스룩</a></h4>
                     <p>격식은 갖추되 불편함은 덜어낸 현대적인 비즈니스 웨어. 스니커즈와 블레이저의 조화로운 매칭법부터 벨트 하나로 달라지는 실루엣의 차이까지 심도 있게 다룹니다.</p>
                 </div>
             </div>
