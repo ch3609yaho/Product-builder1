@@ -19,7 +19,7 @@
     <meta name="keywords" content="날씨 코디, 전연령대 코디, 오피스룩, 데이트룩, 등교룩, 골프룩, 기온별 옷차림, 데일리룩 추천">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -56,15 +56,15 @@
             --glass-border: #E5E7EB;
             --card-active: #111111;
             --body-gradient: none;
-            --font-main: 'Outfit', 'Pretendard', -apple-system, sans-serif;
+            --font-main: 'Inter', 'Outfit', 'Pretendard', -apple-system, sans-serif;
             --font-heading: 'Playfair Display', serif;
             
             /* Personal Color Palette */
             --pc-pink: #FE9EC7;
-            --pc-cream: #F9F6C4;
-            --pc-light-blue: #89D4FF;
+            --pc-cream: #FFFDE7;
+            --pc-light-blue: #E3F2FD;
             --pc-sky-blue: #44ACFF;
-            --pc-glass: rgba(255, 255, 255, 0.4);
+            --pc-glass: rgba(255, 255, 255, 0.7);
         }
 
         body.light-mode {
@@ -112,6 +112,7 @@
                 radial-gradient(at 0% 100%, var(--pc-pink) 0px, transparent 50%),
                 #ffffff;
             background-attachment: fixed;
+            background-size: cover;
         }
 
         body.personal-mode .header .logo {
@@ -300,8 +301,12 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--secondary-bg);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
         }
 
         .header-top-row {
@@ -993,7 +998,11 @@
             background: transparent;
             color: var(--text-main);
             box-shadow: none;
-            border-bottom: 2px solid var(--accent-blue);
+            border-bottom: 3px solid var(--text-main);
+        }
+
+        body.personal-mode .tab-btn.active {
+            border-bottom-color: var(--pc-sky-blue);
         }
 
         .tab-pane {
@@ -1023,13 +1032,12 @@
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
 
-    <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding-top: 4rem;">
-        <div class="header-titles" style="text-align: center; margin-bottom: 3rem;">
-            <h1 id="main-title" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 700; letter-spacing: 1px; color: var(--text-main); margin-bottom: 0.5rem;">퍼스널 컬러 진단소</h1>
-            <p id="main-desc" style="font-size: 1.1rem; color: var(--text-dim); letter-spacing: 0.5px;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
+    <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem;">
+        <div class="header-titles" style="text-align: center; margin-bottom: 4rem;">
+            <h1 id="main-title" style="font-family: var(--font-heading); font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 1rem; transition: all 0.5s ease;">퍼스널 컬러 진단소</h1>
+            <p id="main-desc" style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
         </div>
         
-        <!-- Navigation Tabs Replacement -->
         <div class="tab-nav">
             <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')">퍼스널 컬러 진단소</button>
             <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')">날씨별 코디 추천</button>
@@ -1803,19 +1811,24 @@
             const mainTitle = document.getElementById('main-title');
             const mainDesc = document.getElementById('main-desc');
             
-            panes.forEach(pane => pane.style.display = 'none');
+            // Cleanup previous states
+            panes.forEach(pane => {
+                pane.style.display = 'none';
+                pane.classList.remove('active');
+            });
             btns.forEach(btn => btn.classList.remove('active'));
 
             const targetPane = document.getElementById(`${tabName}-tab`);
             if (targetPane) {
                 targetPane.style.display = 'flex';
+                targetPane.classList.add('active');
             }
             const targetBtn = document.getElementById(`btn-${tabName}`);
             if (targetBtn) {
                 targetBtn.classList.add('active');
             }
 
-            // Update Header Text
+            // Update Header Text & Theme
             if (tabName === 'personal') {
                 mainTitle.textContent = "퍼스널 컬러 진단소";
                 mainDesc.textContent = "당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.";
@@ -1824,6 +1837,11 @@
                 mainTitle.textContent = "날씨별 코디 추천";
                 mainDesc.textContent = "오늘의 날씨 정보와 상황에 맞춰 완벽한 착장을 추천해 드립니다.";
                 document.body.classList.remove('personal-mode');
+            }
+
+            // Trigger UI update if switching to weather
+            if (tabName === 'weather' && typeof updateMainUI === 'function') {
+                updateMainUI();
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2052,8 +2070,10 @@
         window.addEventListener('load', () => {
             fetchWeather();
             initPersonalColorDiagnosis();
-            // Start with personal color tab by default
-            switchTab('personal');
+            // Start with personal color tab by default with a slight delay for better transition
+            setTimeout(() => {
+                switchTab('personal');
+            }, 100);
         });
     </script>
     <footer style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 6rem 1rem; background: var(--secondary-bg);">
