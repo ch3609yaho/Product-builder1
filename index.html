@@ -1024,16 +1024,19 @@
     <div class="ambient-orb orb-2"></div>
 
     <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding-top: 4rem;">
-        <div class="logo" style="font-family: var(--font-heading); font-size: 3rem; font-weight: 700; letter-spacing: 2px; margin-bottom: 3rem; color: var(--text-main);">DANTE LABS</div>
+        <div class="header-titles" style="text-align: center; margin-bottom: 3rem;">
+            <h1 id="main-title" style="font-family: var(--font-heading); font-size: 3.5rem; font-weight: 700; letter-spacing: 1px; color: var(--text-main); margin-bottom: 0.5rem;">퍼스널 컬러 진단소</h1>
+            <p id="main-desc" style="font-size: 1.1rem; color: var(--text-dim); letter-spacing: 0.5px;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
+        </div>
         
         <!-- Navigation Tabs Replacement -->
         <div class="tab-nav">
-            <button class="tab-btn active" id="btn-weather" onclick="switchTab('weather')">날씨별 코디 추천</button>
-            <button class="tab-btn" id="btn-personal" onclick="switchTab('personal')">퍼스널 컬러 진단소</button>
+            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')">퍼스널 컬러 진단소</button>
+            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')">날씨별 코디 추천</button>
         </div>
     </header>
 
-    <div id="weather-tab" class="tab-pane active" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+    <div id="weather-tab" class="tab-pane" style="width: 100%; display: none; flex-direction: column; align-items: center;">
         <div class="selection-area">
             <!-- Age Selection -->
             <div class="selection-row">
@@ -1250,7 +1253,7 @@
         <p style="color: var(--text-dim); font-size: 0.75rem;">© 2024 Daily Office Outfit. All rights reserved.</p>
 </div> <!-- End weather-tab -->
 
-<div id="personal-tab" class="tab-pane" style="width: 100%; display: none; flex-direction: column; align-items: center;">
+<div id="personal-tab" class="tab-pane active" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
     <!-- Personal Color Diagnosis Section -->
     <div class="main-container">
         <section class="diagnosis-section" style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
@@ -1607,6 +1610,7 @@
         }
 
         function setOccasion(occ) {
+            console.log("Setting occasion:", occ);
             currentOccasion = occ;
             document.querySelectorAll('.chip').forEach(chip => {
                 chip.classList.toggle('active', chip.textContent === occ);
@@ -1650,7 +1654,9 @@
             const ageData = outfits[currentAge] || outfits['30s'];
             const genderData = ageData[currentGender] || ageData['men'];
             const occasionData = genderData[currentOccasion] || genderData[Object.keys(genderData)[0]];
-            const recommendation = occasionData[type] || occasionData['Sunny'] || Object.values(occasionData)[0];
+            const recommendation = occasionData[type] || occasionData['Sunny'] || Object.values(occasionData)[0] || { tag: 'No Recommendation', image: '', items: [] };
+
+            console.log("UI Update:", { currentAge, currentGender, currentOccasion, type, recommendation });
 
             // Helper to update specific tab's outfit section
             function updateTabOutfit(prefix, rec, titleOverride) {
@@ -1793,6 +1799,8 @@
         window.switchTab = (tabName) => {
             const panes = document.querySelectorAll('.tab-pane');
             const btns = document.querySelectorAll('.tab-btn');
+            const mainTitle = document.getElementById('main-title');
+            const mainDesc = document.getElementById('main-desc');
             
             panes.forEach(pane => pane.style.display = 'none');
             btns.forEach(btn => btn.classList.remove('active'));
@@ -1806,10 +1814,14 @@
                 targetBtn.classList.add('active');
             }
 
-            // Theme switching logic
+            // Update Header Text
             if (tabName === 'personal') {
+                mainTitle.textContent = "퍼스널 컬러 진단소";
+                mainDesc.textContent = "당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.";
                 document.body.classList.add('personal-mode');
             } else {
+                mainTitle.textContent = "날씨별 코디 추천";
+                mainDesc.textContent = "오늘의 날씨 정보와 상황에 맞춰 완벽한 착장을 추천해 드립니다.";
                 document.body.classList.remove('personal-mode');
             }
 
@@ -1859,7 +1871,7 @@
         }
 
         function onFaceMeshResults(results) {
-            const progressBar = document.getElementById('progress-bar');
+            const progressBar = document.getElementById('analysis-progress-bar');
             if (results.multiFaceLandmarks && results.multiFaceLandmarks.length > 0) {
                 progressBar.style.width = '70%';
                 const landmarks = results.multiFaceLandmarks[0];
@@ -2039,6 +2051,8 @@
         window.addEventListener('load', () => {
             fetchWeather();
             initPersonalColorDiagnosis();
+            // Start with personal color tab by default
+            switchTab('personal');
         });
     </script>
     <footer style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 6rem 1rem; background: var(--secondary-bg);">
