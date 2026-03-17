@@ -61,8 +61,8 @@
             
             /* Personal Color Palette */
             --pc-pink: #FE9EC7;
-            --pc-cream: #FFFDE7;
-            --pc-light-blue: #E3F2FD;
+            --pc-cream: #F9F6C4;
+            --pc-light-blue: #89D4FF;
             --pc-sky-blue: #44ACFF;
             --pc-glass: rgba(255, 255, 255, 0.7);
         }
@@ -142,8 +142,9 @@
             opacity: 0.4;
         }
 
-        .orb-1 { top: -10%; left: -10%; background: var(--pc-pink); animation: orbFloat 20s infinite alternate; }
-        .orb-2 { bottom: -10%; right: -10%; background: var(--pc-light-blue); animation: orbFloat 25s infinite alternate-reverse; }
+        .orb-1 { top: -20%; left: -20%; background: var(--pc-pink); animation: orbFloat 20s infinite alternate; width: 800px; height: 800px; opacity: 0.6; }
+        .orb-2 { bottom: -20%; right: -20%; background: var(--pc-sky-blue); animation: orbFloat 25s infinite alternate-reverse; width: 800px; height: 800px; opacity: 0.6; }
+        .orb-3 { top: 40%; left: 50%; background: var(--pc-cream); animation: orbFloat 30s infinite alternate; width: 600px; height: 600px; opacity: 0.4; }
 
         @keyframes orbFloat {
             0% { transform: translate(0, 0) scale(1); }
@@ -159,6 +160,7 @@
             position: relative;
             margin-bottom: 0;
             animation: fadeIn 1s ease-out;
+            z-index: 1000; /* Ensure navigation is always clickable */
         }
 
         .theme-toggle {
@@ -1031,16 +1033,17 @@
 <body>
     <div class="ambient-orb orb-1"></div>
     <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
 
-    <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem;">
+    <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem; position: relative; z-index: 1001;">
         <div class="header-titles" style="text-align: center; margin-bottom: 4rem;">
             <h1 id="main-title" style="font-family: var(--font-heading); font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 1rem; transition: all 0.5s ease;">퍼스널 컬러 진단소</h1>
             <p id="main-desc" style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
         </div>
         
-        <div class="tab-nav">
-            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')">퍼스널 컬러 진단소</button>
-            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')">날씨별 코디 추천</button>
+        <div class="tab-nav" style="position: relative; z-index: 1002;">
+            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; z-index: 1003;">퍼스널 컬러 진단소</button>
+            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; z-index: 1003;">날씨별 코디 추천</button>
         </div>
     </header>
 
@@ -1265,10 +1268,11 @@
 <div id="personal-tab" class="tab-pane active" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
     <!-- Personal Color Diagnosis Section -->
     <div class="main-container">
-        <section class="diagnosis-section" style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
-            <div class="diagnosis-header" style="margin-bottom: 2.5rem;">
-                <h3 style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI 퍼스널 컬러 진단</h3>
-                <p style="color: var(--text-dim); opacity: 0.8;">얼굴 사진을 업로드하여 당신만의 고유한 톤을 찾아보세요.</p>
+        <section class="diagnosis-section" style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(30px); border: 2px solid transparent; border-image: linear-gradient(135deg, var(--pc-pink), var(--pc-sky-blue), var(--pc-cream)) 1; border-radius: 30px; padding: 4rem; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(254, 158, 199, 0.05), rgba(68, 172, 255, 0.05)); z-index: -1;"></div>
+            <div class="diagnosis-header" style="margin-bottom: 3rem; position: relative;">
+                <h3 style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3rem; font-family: var(--font-heading);">AI 퍼스널 컬러 진단</h3>
+                <p style="color: var(--text-main); opacity: 0.7; font-weight: 500; font-size: 1.1rem;">당신의 피부톤, 눈동자 색상을 분석하여 가장 빛나는 순간을 찾아드립니다.</p>
             </div>
             <div class="diagnosis-grid">
                 <div class="upload-container" id="drop-zone" onclick="document.getElementById('image-input').click()" style="background: rgba(255,255,255,0.5); border: 2px dashed var(--pc-sky-blue); position: relative; overflow: hidden;">
