@@ -40,10 +40,10 @@
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6635015066599694"
         crossorigin="anonymous"></script>
-    <!-- MediaPipe scripts for Personal Color Diagnosis -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+    <!-- MediaPipe scripts for Personal Color Diagnosis (Full JS Bundles) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <style>
         :root {
             /* Minimalist Luxury - White & Ink */
@@ -1031,9 +1031,6 @@
 </head>
 
 <body>
-    <div class="ambient-orb orb-1"></div>
-    <div class="ambient-orb orb-2"></div>
-    <div class="ambient-orb orb-3"></div>
 
     <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem; position: relative; z-index: 1001;">
         <div class="header-titles" style="text-align: center; margin-bottom: 4rem;">
@@ -1946,8 +1943,7 @@
             const ctx = canvas.getContext('2d');
             const placeholder = document.getElementById('upload-placeholder');
             const progress = document.getElementById('analysis-progress');
-            const progressBar = document.getElementById('progress-bar');
-
+            const progressBar = document.getElementById('analysis-progress-bar');
             // UI Setup
             placeholder.style.display = 'none';
             canvas.style.display = 'block';
@@ -2105,6 +2101,9 @@
             </div>
         </div>
     </footer>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    <div class="ambient-orb orb-3"></div>
 </body>
 
 </html>
