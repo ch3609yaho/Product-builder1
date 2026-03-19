@@ -1041,9 +1041,9 @@
             <p id="main-desc" style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
         </div>
         
-        <div class="tab-nav" style="position: relative; z-index: 1002;">
-            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; z-index: 1003;">퍼스널 컬러 진단소</button>
-            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; z-index: 1003;">날씨별 코디 추천</button>
+        <div class="tab-nav" style="position: relative; z-index: 9999; pointer-events: auto;">
+            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; z-index: 10000; cursor: pointer;">퍼스널 컬러 진단소</button>
+            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; z-index: 10000; cursor: pointer;">날씨별 코디 추천</button>
         </div>
     </header>
 
@@ -1271,7 +1271,7 @@
         <section class="diagnosis-section" style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(30px); border: 2px solid transparent; border-image: linear-gradient(135deg, var(--pc-pink), var(--pc-sky-blue), var(--pc-cream)) 1; border-radius: 30px; padding: 4rem; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
             <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(254, 158, 199, 0.05), rgba(68, 172, 255, 0.05)); z-index: -1;"></div>
             <div class="diagnosis-header" style="margin-bottom: 3rem; position: relative;">
-                <h3 style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3rem; font-family: var(--font-heading);">AI 퍼스널 컬러 진단</h3>
+                <h3 style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3rem; font-family: var(--font-heading);">퍼스널 컬러 진단</h3>
                 <p style="color: var(--text-main); opacity: 0.7; font-weight: 500; font-size: 1.1rem;">당신의 피부톤, 눈동자 색상을 분석하여 가장 빛나는 순간을 찾아드립니다.</p>
             </div>
             <div class="diagnosis-grid">
@@ -1313,8 +1313,8 @@
             </div>
         </section>
 
-        <!-- Recommendation Section for Personal Color -->
-        <section class="featured-recommender">
+        <!-- Recommendation Section for Personal Color (Hidden until diagnosis is done) -->
+        <section id="personal-recommender" class="featured-recommender" style="display: none;">
             <div class="outfit-display">
                 <div class="outfit-image-container" id="personal-outfit-image">
                     <!-- Image will be injected -->
@@ -1845,7 +1845,11 @@
 
             // Trigger UI update if switching to weather
             if (tabName === 'weather' && typeof updateMainUI === 'function') {
-                updateMainUI();
+                try {
+                    updateMainUI();
+                } catch (e) {
+                    console.error("Tab switch update error:", e);
+                }
             }
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2040,6 +2044,10 @@
             const resultsDisplay = document.getElementById('results-display');
             resultsDisplay.style.display = 'flex';
             
+            // Show recommendation section
+            const recommender = document.getElementById('personal-recommender');
+            if (recommender) recommender.style.display = 'block';
+            
             document.getElementById('result-season').textContent = data.season;
             document.getElementById('result-type').textContent = type;
             document.getElementById('result-desc').textContent = data.desc;
@@ -2062,6 +2070,7 @@
         window.resetDiagnosis = () => {
             diagnosisResult = null;
             document.getElementById('results-display').style.display = 'none';
+            document.getElementById('personal-recommender').style.display = 'none';
             document.getElementById('diagnosis-guide').style.display = 'block';
             document.getElementById('upload-placeholder').style.display = 'flex';
             document.getElementById('preview-canvas').style.display = 'none';
@@ -2080,40 +2089,16 @@
             }, 100);
         });
     </script>
-    <footer style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 6rem 1rem; background: var(--secondary-bg);">
-        <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1.5fr 1fr; gap: 4rem;">
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <h4 style="color: var(--text-main); font-family: var(--font-heading); font-size: 2rem; font-weight: 700; font-style: italic;">Today's Lookbook</h4>
-                <p style="color: var(--text-dim); font-size: 0.95rem; line-height: 1.8;">우리는 날씨 데이터를 예술적인 시각으로 해석합니다. 기상 정보가 패션 영감으로 승화되는 순간, 당신의 하루는 더욱 특별해집니다. AI 기술과 에디토리얼 감각의 조화로운 경험을 느껴보세요.</p>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                <div>
-                    <h5 style="color: var(--text-main); font-family: var(--font-main); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 2rem;">Explore</h5>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="#fashion-column" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;">Column</a>
-                        <a href="#styling-guide" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;">Philosophy</a>
-                        <a href="#faq" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;">Essentials</a>
-                    </div>
-                </div>
-                <div>
-                    <h5 style="color: var(--text-main); font-family: var(--font-main); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 2rem;">Legal</h5>
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;">Privacy</a>
-                        <a href="terms.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.85rem;">Terms</a>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h5 style="color: var(--text-main); font-family: var(--font-main); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 2rem;">Contact</h5>
-                <p style="color: var(--text-dim); font-size: 0.85rem; line-height: 1.8;">
-                    Dante Building, Seoul<br>
-                    HQ Operations Team<br>
-                    <span style="color: var(--text-main); font-weight: 600;">support@todayslookbook.com</span>
-                </p>
+    <footer style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 4rem 1rem; background: var(--secondary-bg);">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <h4 style="color: var(--text-main); font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; font-style: italic; margin-bottom: 2rem;">Today's Lookbook</h4>
+            <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
+                <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Privacy Policy</a>
+                <a href="terms.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Terms of Service</a>
             </div>
         </div>
-        <div style="max-width: 1000px; margin: 6rem auto 0; border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
-            <p style="font-size: 0.75rem; letter-spacing: 1px;">&copy; 2026 TODAY'S LOOKBOOK. CRAFTED BY DANTE.</p>
+        <div style="max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
+            <p style="font-size: 0.75rem; letter-spacing: 1px;">&copy; 2026 TODAY'S LOOKBOOK. ALL RIGHTS RESERVED.</p>
             <div style="display: flex; gap: 2rem;">
                 <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;">Instagram</span>
                 <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;">Twitter</span>
