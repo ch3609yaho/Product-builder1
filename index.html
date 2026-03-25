@@ -1038,11 +1038,12 @@
             <p id="main-desc" style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
         </div>
         
-        <div class="tab-nav" style="position: relative; z-index: 9999; pointer-events: auto;">
-            <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; z-index: 10000; cursor: pointer;">퍼스널 컬러 진단소</button>
-            <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; z-index: 10000; cursor: pointer;">날씨별 코디 추천</button>
-        </div>
     </header>
+
+    <div class="tab-nav" style="position: sticky; top: 0; width: 100%; display: flex; justify-content: center; gap: 1rem; padding: 1.5rem; background: var(--pc-glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); z-index: 10000; pointer-events: auto;">
+        <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">퍼스널 컬러 진단소</button>
+        <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">날씨별 코디 추천</button>
+    </div>
 
     <div id="weather-tab" class="tab-pane" style="width: 100%; display: none; flex-direction: column; align-items: center;">
         <div class="selection-area">
@@ -1135,68 +1136,6 @@
             </script>
         </div>
 
-        <!-- New Value-Add Sections for AdSense -->
-        <section class="info-section">
-            <div class="info-card" id="about-section">
-                <h3>Editorial View: AI and Craftsmanship</h3>
-                <p>우리는 기술이 인간의 감각을 대체하는 것이 아니라, 확장하는 도구라고 믿습니다. '오늘의 날씨 코디'는 기상청 및 글로벌 기상 데이터(Open-Meteo)를 AI가 정밀 분석하여, 단순한 수치를 넘어선 '최적의 착용감'을 제안합니다. 연령과 상황에 따른 미세한 취향 차이까지 반영하는 우리의 알고리즘은 패션을 데이터 사이언스로 접근한 새로운 시도입니다.</p>
-            </div>
-            <div class="info-card" id="how-it-works-section">
-                <h3>The Method: How We Work</h3>
-                <p>사용자가 선택한 데이터는 실시간 기상 관측 값과 결합됩니다. 10대의 역동적인 등교부터 50대의 품격 있는 외출까지, 우리는 각 연령대의 활동 반경과 스타일 선호도를 프로파일링하여 코디를 생성합니다. 이것은 단순한 자동 생성이 아닌, 수만 개의 패션 데이터를 학습한 AI가 큐레이팅하는 디지털 룩북입니다.</p>
-            </div>
-        </section>
-
-        <!-- Weekly Fashion Column SECTION (FOR ADSENSE) -->
-        <section class="fashion-column" id="fashion-column">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: center; margin-bottom: 4rem;">Fashion Column</h2>
-            <div class="column-grid">
-                <div class="column-item">
-                    <a href="https://www.vogue.co.kr/category/fashion/" target="_blank" style="text-decoration: none;">
-                        <div class="column-thumb">
-                            <img src="fashion_layering_1773279874376.png" alt="Spring/Autumn Layering">
-                        </div>
-                    </a>
-                    <h4><a href="https://www.vogue.co.kr/category/fashion/" target="_blank">환절기 레이어링의 미학: 20도 안팎의 날씨를 우아하게 견디는 방법</a></h4>
-                    <p>낮과 밤의 기온 차가 벌어지는 춘추절기에는 소재의 혼방율을 체크하는 것이 핵심입니다. 가벼운 코튼 니트와 실크 스카프의 조합은 체온 유지와 스타일을 동시에 잡는 스마트한 전략입니다.</p>
-                </div>
-                <div class="column-item">
-                    <a href="https://www.gqkorea.co.kr/category/fashion/" target="_blank" style="text-decoration: none;">
-                        <div class="column-thumb">
-                            <img src="fashion_capsule_1773280002638.png" alt="Capsule Wardrobe">
-                        </div>
-                    </a>
-                    <h4><a href="https://www.gqkorea.co.kr/category/fashion/" target="_blank">캡슐 워드롭: 미니멀리스트를 위한 한 달 코디 공식</a></h4>
-                    <p>옷장은 가볍게, 스타일은 풍성하게. 단 10개의 기본 아이템만으로 30가지 이상의 조합을 만들어내는 캡슐 워드롭의 기본 원칙을 소개합니다. 기본에 충실한 것이 가장 강력한 트렌드입니다.</p>
-                </div>
-                <div class="column-item">
-                    <a href="https://www.elle.co.kr/fashion" target="_blank" style="text-decoration: none;">
-                        <div class="column-thumb">
-                            <img src="fashion_biz_casual_1773280090319.png" alt="Business Casual">
-                        </div>
-                    </a>
-                    <h4><a href="https://www.elle.co.kr/fashion" target="_blank">비즈니스 캐주얼의 재정의: TPO를 넘나드는 유연한 오피스룩</a></h4>
-                    <p>격식은 갖추되 불편함은 덜어낸 현대적인 비즈니스 웨어. 스니커즈와 블레이저의 조화로운 매칭법부터 벨트 하나로 달라지는 실루엣의 차이까지 심도 있게 다룹니다.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ Section (FOR ADSENSE) -->
-        <section class="faq-section" id="faq">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; text-align: left; margin-bottom: 4rem;">Essential FAQ</h2>
-            <div class="faq-item">
-                <div class="faq-question">Q: 기온별 옷차림, 기준이 무엇인가요? <span>+</span></div>
-                <div class="faq-answer">A: 체감 온도는 바람과 습도에 의해 결정됩니다. 통상 20도 이상은 반팔, 17-19도는 얇은 가디건, 12-16도는 자켓이나 트렌치코트를 추천합니다. 우리 AI는 이러한 통계적 수치에 실시간 습도와 풍속 데이터를 더해 더 정밀한 가이드를 제공합니다.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Q: AI 추천 이미지는 실제 구매가 가능한가요? <span>+</span></div>
-                <div class="faq-answer">A: 현재 제공되는 이미지는 스타일 영감을 위한 시각적 가이드입니다. 다만, 우측의 코디 아이템 목록을 통해 유사한 디자인의 제품을 찾는 데 도움을 드릴 수 있으며, 향후 실제 제품 구매 링크를 연동할 계획입니다.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Q: 비 오는 날 스타일 스타일링 팁이 있을까요? <span>+</span></div>
-                <div class="faq-answer">A: 습도가 높은 날에는 리넨이나 기능성 폴리 소재처럼 통기성이 좋고 빨리 마르는 소재를 선택하십시오. 밝은 색상의 신발보다는 어두운 톤의 가죽이나 폴리 소재의 슈즈로 오염에 대비하는 것이 좋습니다.</div>
-            </div>
-        </section>
 
 
         <section class="disqus-section">
@@ -1272,19 +1211,20 @@
                 <p style="color: var(--text-main); opacity: 0.7; font-weight: 500; font-size: 1.1rem;">당신의 피부톤, 눈동자 색상을 분석하여 가장 빛나는 순간을 찾아드립니다.</p>
             </div>
             <div class="diagnosis-grid">
-                <div class="upload-container" id="drop-zone" onclick="document.getElementById('image-input').click()" style="background: rgba(255,255,255,0.5); border: 2px dashed var(--pc-sky-blue); position: relative; overflow: hidden;">
-                    <div id="upload-placeholder">
+                <label for="image-input" class="upload-container" id="drop-zone" style="background: rgba(255,255,255,0.5); border: 2px dashed var(--pc-sky-blue); position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; width: 100%; border-radius: 20px;">
+                    <div id="upload-placeholder" style="text-align: center;">
                         <span style="font-size: 3.5rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));">📸</span>
                         <p style="font-weight: 600; margin-top: 1rem;">사진을 드래그하거나 클릭하여 업로드</p>
                         <span style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">정면에서 찍은 밝은 사진이 좋습니다.</span>
                     </div>
-                    <canvas id="preview-canvas" class="preview-canvas" style="border-radius: 12px;"></canvas>
-                    <input type="file" id="image-input" accept="image/*" hidden>
+                    <canvas id="preview-canvas" class="preview-canvas" style="border-radius: 12px; display: none; max-width: 100%;"></canvas>
+                    
+                    <input type="file" id="image-input" accept="image/*" style="display: none;">
                     
                     <div id="analysis-progress" style="display: none; position: absolute; bottom: 20px; width: 80%; background: rgba(0,0,0,0.05); height: 6px; border-radius: 3px; overflow: hidden;">
                         <div id="analysis-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--pc-pink), var(--pc-sky-blue)); transition: width 0.3s;"></div>
                     </div>
-                </div>
+                </label>
                 <div class="diagnosis-results">
                     <div id="diagnosis-guide" class="guide-box" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.3);">
                         <h4 style="color: var(--pc-sky-blue); font-weight: 700;">진단 가이드</h4>
@@ -1331,6 +1271,10 @@
 </div> <!-- End personal-tab -->
 
     <script>
+        window.addEventListener('error', (e) => {
+            console.error("Global JS Error:", e.message, "at", e.filename, ":", e.lineno);
+        });
+
         const LAT = 37.5665;
         const LON = 126.9780;
 
@@ -2077,8 +2021,13 @@
 
         updateOccasionChips();
         window.addEventListener('load', () => {
+            console.log("App loaded. Initializing...");
+            try {
+                initPersonalColorDiagnosis();
+            } catch (e) {
+                console.error("Personal Color Init Error:", e);
+            }
             fetchWeather();
-            initPersonalColorDiagnosis();
             // Start with personal color tab by default with a slight delay for better transition
             setTimeout(() => {
                 switchTab('personal');
