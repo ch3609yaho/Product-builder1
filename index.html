@@ -19,7 +19,9 @@
     <meta name="keywords" content="날씨 코디, 전연령대 코디, 오피스룩, 데이트룩, 등교룩, 골프룩, 기온별 옷차림, 데일리룩 추천">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -49,7 +51,8 @@
             /* Minimalist Luxury - White & Ink */
             --primary-bg: #FFFFFF;
             --secondary-bg: #F9F9F9;
-            --accent-blue: #00AEEF; /* Electric Cyan */
+            --accent-blue: #00AEEF;
+            /* Electric Cyan */
             --accent-silver: #666666;
             --text-main: #111111;
             --text-dim: #666666;
@@ -58,7 +61,7 @@
             --body-gradient: none;
             --font-main: 'Inter', 'Outfit', 'Pretendard', -apple-system, sans-serif;
             --font-heading: 'Playfair Display', serif;
-            
+
             /* Personal Color Palette */
             --pc-pink: #FE9EC7;
             --pc-cream: #F9F6C4;
@@ -104,7 +107,7 @@
 
         /* Personal Mode Special Aesthetic */
         body.personal-mode {
-            background: 
+            background:
                 radial-gradient(at 0% 0%, var(--pc-pink) 0px, transparent 50%),
                 radial-gradient(at 50% 0%, var(--pc-cream) 0px, transparent 50%),
                 radial-gradient(at 100% 0%, var(--pc-light-blue) 0px, transparent 50%),
@@ -117,7 +120,7 @@
 
         body.personal-mode .header .logo {
             color: var(--text-main);
-            text-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
         body.personal-mode .tab-btn.active {
@@ -142,13 +145,44 @@
             opacity: 0.4;
         }
 
-        .orb-1 { top: -20%; left: -20%; background: var(--pc-pink); animation: orbFloat 20s infinite alternate; width: 800px; height: 800px; opacity: 0.6; }
-        .orb-2 { bottom: -20%; right: -20%; background: var(--pc-sky-blue); animation: orbFloat 25s infinite alternate-reverse; width: 800px; height: 800px; opacity: 0.6; }
-        .orb-3 { top: 40%; left: 50%; background: var(--pc-cream); animation: orbFloat 30s infinite alternate; width: 600px; height: 600px; opacity: 0.4; }
+        .orb-1 {
+            top: -20%;
+            left: -20%;
+            background: var(--pc-pink);
+            animation: orbFloat 20s infinite alternate;
+            width: 800px;
+            height: 800px;
+            opacity: 0.6;
+        }
+
+        .orb-2 {
+            bottom: -20%;
+            right: -20%;
+            background: var(--pc-sky-blue);
+            animation: orbFloat 25s infinite alternate-reverse;
+            width: 800px;
+            height: 800px;
+            opacity: 0.6;
+        }
+
+        .orb-3 {
+            top: 40%;
+            left: 50%;
+            background: var(--pc-cream);
+            animation: orbFloat 30s infinite alternate;
+            width: 600px;
+            height: 600px;
+            opacity: 0.4;
+        }
 
         @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.1); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 50px) scale(1.1);
+            }
         }
 
         header {
@@ -160,7 +194,8 @@
             position: relative;
             margin-bottom: 0;
             animation: fadeIn 1s ease-out;
-            z-index: 1000; /* Ensure navigation is always clickable */
+            z-index: 1000;
+            /* Ensure navigation is always clickable */
         }
 
         .theme-toggle {
@@ -214,7 +249,7 @@
         }
 
         body.light-mode .toggle-btn.active {
-            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+            box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
         }
 
         /* Combined Selectors Area */
@@ -810,6 +845,7 @@
                 grid-column: span 1;
             }
         }
+
         /* Personal Color Diagnosis Styles */
         .diagnosis-section {
             width: 100%;
@@ -908,7 +944,8 @@
         }
 
         .results-container {
-            display: none; /* Shown after analysis */
+            display: none;
+            /* Shown after analysis */
             flex-direction: column;
             gap: 1.5rem;
             animation: slideUp 0.6s ease-out;
@@ -1018,7 +1055,7 @@
 
         /* Hero Text Hardening */
         .hero h1 {
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             line-height: 1.1;
         }
 
@@ -1032,20 +1069,31 @@
 
 <body>
 
-    <header class="header" style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem; position: relative; z-index: 1001;">
+    <header class="header"
+        style="width: 100%; max-width: 1200px; display: flex; flex-direction: column; align-items: center; padding: 6rem 1rem 2rem; position: relative; z-index: 1001;">
         <div class="header-titles" style="text-align: center; margin-bottom: 4rem;">
-            <h1 id="main-title" style="font-family: var(--font-heading); font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 1rem; transition: all 0.5s ease;">퍼스널 컬러 진단소</h1>
-            <p id="main-desc" style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
+            <h1 id="main-title"
+                style="font-family: var(--font-heading); font-size: 4rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-main); margin-bottom: 1rem; transition: all 0.5s ease;">
+                퍼스널 컬러 진단소</h1>
+            <p id="main-desc"
+                style="font-size: 1.25rem; color: var(--text-dim); letter-spacing: -0.01em; max-width: 600px; margin: 0 auto; line-height: 1.5; opacity: 0.8; transition: all 0.5s ease;">
+                당신의 고유한 톤을 분석하여 최적의 스타일을 제안합니다.</p>
         </div>
-        
+
     </header>
 
-    <div class="tab-nav" style="position: sticky; top: 0; width: 100%; display: flex; justify-content: center; gap: 1rem; padding: 1.5rem; background: var(--pc-glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); z-index: 10000; pointer-events: auto;">
-        <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')" style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">퍼스널 컬러 진단소</button>
-        <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')" style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">날씨별 코디 추천</button>
+    <div class="tab-nav"
+        style="position: sticky; top: 0; width: 100%; display: flex; justify-content: center; gap: 1rem; padding: 1.5rem; background: var(--pc-glass); backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); z-index: 10000; pointer-events: auto;">
+        <button class="tab-btn active" id="btn-personal" onclick="switchTab('personal')"
+            style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">퍼스널
+            컬러 진단소</button>
+        <button class="tab-btn" id="btn-weather" onclick="switchTab('weather')"
+            style="position: relative; cursor: pointer; padding: 0.8rem 1.5rem; border-radius: 30px; border: none; background: transparent; font-weight: 600; color: var(--text-main); transition: all 0.3s;">날씨별
+            코디 추천</button>
     </div>
 
-    <div id="weather-tab" class="tab-pane" style="width: 100%; display: none; flex-direction: column; align-items: center;">
+    <div id="weather-tab" class="tab-pane"
+        style="width: 100%; display: none; flex-direction: column; align-items: center;">
         <div class="selection-area">
             <!-- Age Selection -->
             <div class="selection-row">
@@ -1082,193 +1130,228 @@
                         <span id="quick-temp" class="quick-temp">20°C</span>
                         <span id="quick-desc" class="quick-desc">맑은 하늘</span>
                     </div>
-            </div>
-        </div>
-    </div> <!-- Close header-content -->
-
-
-
-
-
-    <!-- Moving Recommender into Weather Tab -->
-    <div class="main-container">
-        <!-- Main Highlight: Pure Outfit Focus -->
-        <section class="featured-recommender">
-            <div class="outfit-display">
-                <div class="outfit-image-container" id="weather-outfit-image">
-                    <!-- Image Injected here -->
                 </div>
-                <div class="outfit-details">
-                    <div class="outfit-header">
-                        <h2 id="weather-day-title">날씨별 추천 코디</h2>
-                        <span class="outfit-tag" id="weather-outfit-tag">Business Casual</span>
+            </div>
+        </div> <!-- Close header-content -->
+
+
+
+
+
+        <!-- Moving Recommender into Weather Tab -->
+        <div class="main-container">
+            <!-- Main Highlight: Pure Outfit Focus -->
+            <section class="featured-recommender">
+                <div class="outfit-display">
+                    <div class="outfit-image-container" id="weather-outfit-image">
+                        <!-- Image Injected here -->
                     </div>
-                    <ul class="outfit-list" id="weather-outfit-list">
-                        <!-- Items Injected here -->
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- Professional Styling Guide (Moved here for better flow) -->
-        <section id="styling-guide" class="recommendation-form-section" style="margin-top: 2rem; border-top: none; padding-top: 0;">
-            <div class="form-header" style="padding-top: 2rem; border-top: 1px solid var(--glass-border);">
-                <h3 style="margin-bottom: 2rem;">Styling Philosophy</h3>
-                <div style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); line-height: 1.6; max-width: 900px; margin: 0 auto; text-align: center; padding-bottom: 2.5rem; margin-bottom: 2.5rem; word-break: keep-all;">
-                    "스타일은 당신이 누구인지, 무엇을 말하고 싶은지를 표현하는 침묵의 언어입니다."
-                </div>
-                <div id="guide-content" style="font-size: 1rem; color: var(--text-dim); text-align: left; line-height: 1.8; max-width: 850px; margin: 0 auto;">
-                    <!-- Content will be injected -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Top Ad Banner (Moved for better flow) -->
-        <div class="ad-container" style="width: 100%; text-align: center; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 2rem;">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6635015066599694" data-ad-slot="auto"
-                data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-
-
-        <section class="disqus-section">
-            <div id="disqus_thread"></div>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered
-                    by Disqus.</a></noscript>
-        </section>
-
-        <!-- Bottom Ad Banner moved after Disqus -->
-        <div class="ad-container" style="width: 100%; text-align: center; margin-top: 2rem;">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6635015066599694" data-ad-slot="auto"
-                data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-
-        <!-- Recommendation Form -->
-        <section class="recommendation-form-section">
-            <div class="form-header">
-                <h3>나만을 위한 맞춤 코디 신청</h3>
-                <p style="font-size: 0.9rem; color: var(--text-dim);">취향과 사이즈를 알려주시면 전문가가 추천해 드립니다.</p>
-            </div>
-            <form action="https://formspree.io/f/mnjbezan" method="POST" id="fashion-form" class="form-grid">
-                <div class="form-group">
-                    <label for="name">이름</label>
-                    <input type="text" id="name" name="name" placeholder="홍길동" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="style">선호 스타일</label>
-                    <select id="style" name="style">
-                        <option value="business">정통 비즈니스 룩</option>
-                        <option value="casual">비즈니스 캐주얼</option>
-                        <option value="minimal">미니멀룩</option>
-                        <option value="trendy">트렌디 오피스룩</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="job">직업군</label>
-                    <input type="text" id="job" name="occupation" placeholder="예: IT 개발자, 영업직" required>
-                </div>
-                <div class="form-group full-width">
-                    <label for="message">추가 요청사항 (체형, 선호 색상 등)</label>
-                    <textarea id="message" name="message" rows="4"
-                        placeholder="예: 어깨가 있는 편이에요. 블루 계열을 선호합니다."></textarea>
-                </div>
-                <!-- Formspree hidden fields -->
-                <input type="hidden" name="_subject" value="새로운 코디 추천 신청이 접수되었습니다!">
-                <button type="submit" class="submit-btn full-width" style="width: 100%;">신청하기</button>
-            </form>
-        </section>
-        <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
-            <a href="/privacy-policy.html"
-                style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">개인정보처리방침</a>
-            <a href="#" style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">이용약관</a>
-            <a href="#fashion-form" style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">문의하기</a>
-        </div>
-        <p style="color: var(--text-dim); font-size: 0.75rem;">© 2024 Daily Office Outfit. All rights reserved.</p>
-    </div> <!-- End main-container -->
-</div> <!-- End weather-tab -->
-
-<div id="personal-tab" class="tab-pane active" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
-    <!-- Personal Color Diagnosis Section -->
-    <div class="main-container">
-        <section class="diagnosis-section" style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(30px); border: 2px solid transparent; border-image: linear-gradient(135deg, var(--pc-pink), var(--pc-sky-blue), var(--pc-cream)) 1; border-radius: 30px; padding: 4rem; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
-            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(254, 158, 199, 0.05), rgba(68, 172, 255, 0.05)); z-index: -1;"></div>
-            <div class="diagnosis-header" style="margin-bottom: 3rem; position: relative;">
-                <h3 style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3rem; font-family: var(--font-heading);">퍼스널 컬러 진단</h3>
-                <p style="color: var(--text-main); opacity: 0.7; font-weight: 500; font-size: 1.1rem;">당신의 피부톤, 눈동자 색상을 분석하여 가장 빛나는 순간을 찾아드립니다.</p>
-            </div>
-            <div class="diagnosis-grid">
-                <label for="image-input" class="upload-container" id="drop-zone" onclick="console.log('Upload area clicked')" style="background: rgba(255,255,255,0.5); border: 2px dashed var(--pc-sky-blue); position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; width: 100%; border-radius: 20px;">
-                    <div id="upload-placeholder" style="text-align: center;">
-                        <span style="font-size: 3.5rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));">📸</span>
-                        <p style="font-weight: 600; margin-top: 1rem;">사진을 드래그하거나 클릭하여 업로드</p>
-                        <span style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">정면에서 찍은 밝은 사진이 좋습니다.</span>
-                    </div>
-                    <canvas id="preview-canvas" class="preview-canvas" style="border-radius: 12px; display: none; max-width: 100%;"></canvas>
-                    
-                    <input type="file" id="image-input" accept="image/*" style="display: none;">
-                    
-                    <div id="analysis-progress" style="display: none; position: absolute; bottom: 20px; width: 80%; background: rgba(0,0,0,0.05); height: 6px; border-radius: 3px; overflow: hidden;">
-                        <div id="analysis-progress-bar" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--pc-pink), var(--pc-sky-blue)); transition: width 0.3s;"></div>
-                    </div>
-                </label>
-                <div class="diagnosis-results">
-                    <div id="diagnosis-guide" class="guide-box" style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.3);">
-                        <h4 style="color: var(--pc-sky-blue); font-weight: 700;">진단 가이드</h4>
-                        <ul class="guide-list" style="margin-top: 1rem;">
-                            <li><i style="color: var(--pc-pink);">✦</i> 자연광 아래에서 촬영하세요.</li>
-                            <li><i style="color: var(--pc-pink);">✦</i> 메이크업을 하지 않은 민낯이 정확합니다.</li>
-                            <li><i style="color: var(--pc-pink);">✦</i> 배경은 가급적 흰색이나 무채색이 좋습니다.</li>
+                    <div class="outfit-details">
+                        <div class="outfit-header">
+                            <h2 id="weather-day-title">날씨별 추천 코디</h2>
+                            <span class="outfit-tag" id="weather-outfit-tag">Business Casual</span>
+                        </div>
+                        <ul class="outfit-list" id="weather-outfit-list">
+                            <!-- Items Injected here -->
                         </ul>
                     </div>
-                    <div id="results-display" class="results-container" style="display: none; background: rgba(255,255,255,0.6); border-radius: 15px; padding: 2rem;">
-                        <div class="result-badge" id="result-season" style="background: var(--pc-sky-blue); color: white; box-shadow: 0 10px 20px rgba(68,172,255,0.3);">?</div>
-                        <h4 id="result-type" style="font-family: var(--font-heading); font-size: 1.8rem; margin-top: -1rem; color: var(--text-main);">Winter Cool</h4>
-                        <p id="result-desc" style="color: var(--text-dim); line-height: 1.6;">당신의 톤에 대한 설명이 여기에 표시됩니다.</p>
-                        <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 700;">
-                            <span>Match Accuracy</span>
-                            <span id="match-accuracy-text" style="color: var(--pc-sky-blue);">0%</span>
-                        </div>
-                        <div class="match-score-bar" style="background: rgba(0,0,0,0.05); height: 8px; border-radius: 4px;"><div class="match-score-fill" id="match-score-fill" style="background: linear-gradient(90deg, var(--pc-pink), var(--pc-sky-blue));"></div></div>
-                        <div class="palette-grid" id="palette-grid" style="margin-top: 1.5rem;"></div>
-                        <button class="submit-btn" onclick="resetDiagnosis()" style="margin-top: 2rem; padding: 1rem 2rem; width: 100%; border-radius: 30px; background: var(--text-main); color: white; font-weight: 700;">다시 진단하기</button>
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Recommendation Section for Personal Color (Hidden until diagnosis is done) -->
-        <section id="personal-recommender" class="featured-recommender" style="display: none;">
-            <div class="outfit-display">
-                <div class="outfit-image-container" id="personal-outfit-image">
-                    <!-- Image will be injected -->
-                </div>
-                <div class="outfit-details">
-                    <div class="outfit-header">
-                        <h2 id="personal-day-title">내 톤에 맞춘 추천</h2>
-                        <span class="outfit-tag" id="personal-outfit-tag">Personal Best</span>
+
+
+
+
+            <!-- Professional Styling Guide (Moved here for better flow) -->
+            <section id="styling-guide" class="recommendation-form-section"
+                style="margin-top: 2rem; border-top: none; padding-top: 0;">
+                <div class="form-header" style="padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                    <h3 style="margin-bottom: 2rem;">Styling Philosophy</h3>
+                    <div
+                        style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-main); line-height: 1.6; max-width: 900px; margin: 0 auto; text-align: center; padding-bottom: 2.5rem; margin-bottom: 2.5rem; word-break: keep-all;">
+                        "스타일은 당신이 누구인지, 무엇을 말하고 싶은지를 표현하는 침묵의 언어입니다."
                     </div>
-                    <ul class="outfit-list" id="personal-outfit-list">
-                        <!-- Items will be injected -->
-                    </ul>
+                    <div id="guide-content"
+                        style="font-size: 1rem; color: var(--text-dim); text-align: left; line-height: 1.8; max-width: 850px; margin: 0 auto;">
+                        <!-- Content will be injected -->
+                    </div>
                 </div>
+            </section>
+
+            <!-- Top Ad Banner (Moved for better flow) -->
+            <div class="ad-container"
+                style="width: 100%; text-align: center; margin-bottom: 2rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 2rem;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6635015066599694"
+                    data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
-        </section>
-    </div> <!-- End main-container -->
-</div> <!-- End personal-tab -->
+
+
+
+            <section class="disqus-section">
+                <div id="disqus_thread"></div>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                        powered
+                        by Disqus.</a></noscript>
+            </section>
+
+            <!-- Bottom Ad Banner moved after Disqus -->
+            <div class="ad-container" style="width: 100%; text-align: center; margin-top: 2rem;">
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6635015066599694"
+                    data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <!-- Recommendation Form -->
+            <section class="recommendation-form-section">
+                <div class="form-header">
+                    <h3>나만을 위한 맞춤 코디 신청</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-dim);">취향과 사이즈를 알려주시면 전문가가 추천해 드립니다.</p>
+                </div>
+                <form action="https://formspree.io/f/mnjbezan" method="POST" id="fashion-form" class="form-grid">
+                    <div class="form-group">
+                        <label for="name">이름</label>
+                        <input type="text" id="name" name="name" placeholder="홍길동" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="_replyto" placeholder="example@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="style">선호 스타일</label>
+                        <select id="style" name="style">
+                            <option value="business">정통 비즈니스 룩</option>
+                            <option value="casual">비즈니스 캐주얼</option>
+                            <option value="minimal">미니멀룩</option>
+                            <option value="trendy">트렌디 오피스룩</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="job">직업군</label>
+                        <input type="text" id="job" name="occupation" placeholder="예: IT 개발자, 영업직" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">추가 요청사항 (체형, 선호 색상 등)</label>
+                        <textarea id="message" name="message" rows="4"
+                            placeholder="예: 어깨가 있는 편이에요. 블루 계열을 선호합니다."></textarea>
+                    </div>
+                    <!-- Formspree hidden fields -->
+                    <input type="hidden" name="_subject" value="새로운 코디 추천 신청이 접수되었습니다!">
+                    <button type="submit" class="submit-btn full-width" style="width: 100%;">신청하기</button>
+                </form>
+            </section>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem;">
+                <a href="/privacy-policy.html"
+                    style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">개인정보처리방침</a>
+                <a href="#" style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">이용약관</a>
+                <a href="#fashion-form"
+                    style="color: var(--text-dim); text-decoration: none; font-size: 0.8rem;">문의하기</a>
+            </div>
+            <p style="color: var(--text-dim); font-size: 0.75rem;">© 2024 Daily Office Outfit. All rights reserved.</p>
+        </div> <!-- End main-container -->
+    </div> <!-- End weather-tab -->
+
+    <div id="personal-tab" class="tab-pane active"
+        style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+        <!-- Personal Color Diagnosis Section -->
+        <div class="main-container">
+            <section class="diagnosis-section"
+                style="margin-bottom: 4rem; background: var(--pc-glass); backdrop-filter: blur(30px); border: 2px solid transparent; border-image: linear-gradient(135deg, var(--pc-pink), var(--pc-sky-blue), var(--pc-cream)) 1; border-radius: 30px; padding: 4rem; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; overflow: hidden;">
+                <div
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(254, 158, 199, 0.05), rgba(68, 172, 255, 0.05)); z-index: -1;">
+                </div>
+                <div class="diagnosis-header" style="margin-bottom: 3rem; position: relative;">
+                    <h3
+                        style="background: linear-gradient(135deg, var(--pc-sky-blue), var(--pc-pink)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-size: 3rem; font-family: var(--font-heading);">
+                        퍼스널 컬러 진단</h3>
+                    <p style="color: var(--text-main); opacity: 0.7; font-weight: 500; font-size: 1.1rem;">당신의 피부톤, 눈동자
+                        색상을 분석하여 가장 빛나는 순간을 찾아드립니다.</p>
+                </div>
+                <div class="diagnosis-grid">
+                    <label for="image-input" class="upload-container" id="drop-zone"
+                        onclick="console.log('Upload area clicked')"
+                        style="background: rgba(255,255,255,0.5); border: 2px dashed var(--pc-sky-blue); position: relative; overflow: hidden; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; width: 100%; border-radius: 20px;">
+                        <div id="upload-placeholder" style="text-align: center;">
+                            <span style="font-size: 3.5rem; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));">📸</span>
+                            <p style="font-weight: 600; margin-top: 1rem;">사진을 드래그하거나 클릭하여 업로드</p>
+                            <span style="font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem;">정면에서 찍은 밝은 사진이
+                                좋습니다.</span>
+                        </div>
+                        <canvas id="preview-canvas" class="preview-canvas"
+                            style="border-radius: 12px; display: none; max-width: 100%;"></canvas>
+
+                        <input type="file" id="image-input" accept="image/*" style="display: none;">
+
+                        <div id="analysis-progress"
+                            style="display: none; position: absolute; bottom: 20px; width: 80%; background: rgba(0,0,0,0.05); height: 6px; border-radius: 3px; overflow: hidden;">
+                            <div id="analysis-progress-bar"
+                                style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--pc-pink), var(--pc-sky-blue)); transition: width 0.3s;">
+                            </div>
+                        </div>
+                    </label>
+                    <div class="diagnosis-results">
+                        <div id="diagnosis-guide" class="guide-box"
+                            style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.3);">
+                            <h4 style="color: var(--pc-sky-blue); font-weight: 700;">진단 가이드</h4>
+                            <ul class="guide-list" style="margin-top: 1rem;">
+                                <li><i style="color: var(--pc-pink);">✦</i> 자연광 아래에서 촬영하세요.</li>
+                                <li><i style="color: var(--pc-pink);">✦</i> 메이크업을 하지 않은 민낯이 정확합니다.</li>
+                                <li><i style="color: var(--pc-pink);">✦</i> 배경은 가급적 흰색이나 무채색이 좋습니다.</li>
+                            </ul>
+                        </div>
+                        <div id="results-display" class="results-container"
+                            style="display: none; background: rgba(255,255,255,0.6); border-radius: 15px; padding: 2rem;">
+                            <div class="result-badge" id="result-season"
+                                style="background: var(--pc-sky-blue); color: white; box-shadow: 0 10px 20px rgba(68,172,255,0.3);">
+                                ?</div>
+                            <h4 id="result-type"
+                                style="font-family: var(--font-heading); font-size: 1.8rem; margin-top: -1rem; color: var(--text-main);">
+                                Winter Cool</h4>
+                            <p id="result-desc" style="color: var(--text-dim); line-height: 1.6;">당신의 톤에 대한 설명이 여기에
+                                표시됩니다.</p>
+                            <div
+                                style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 700;">
+                                <span>Match Accuracy</span>
+                                <span id="match-accuracy-text" style="color: var(--pc-sky-blue);">0%</span>
+                            </div>
+                            <div class="match-score-bar"
+                                style="background: rgba(0,0,0,0.05); height: 8px; border-radius: 4px;">
+                                <div class="match-score-fill" id="match-score-fill"
+                                    style="background: linear-gradient(90deg, var(--pc-pink), var(--pc-sky-blue));">
+                                </div>
+                            </div>
+                            <div class="palette-grid" id="palette-grid" style="margin-top: 1.5rem;"></div>
+                            <button class="submit-btn" onclick="resetDiagnosis()"
+                                style="margin-top: 2rem; padding: 1rem 2rem; width: 100%; border-radius: 30px; background: var(--text-main); color: white; font-weight: 700;">다시
+                                진단하기</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recommendation Section for Personal Color (Hidden until diagnosis is done) -->
+            <section id="personal-recommender" class="featured-recommender" style="display: none;">
+                <div class="outfit-display">
+                    <div class="outfit-image-container" id="personal-outfit-image">
+                        <!-- Image will be injected -->
+                    </div>
+                    <div class="outfit-details">
+                        <div class="outfit-header">
+                            <h2 id="personal-day-title">내 톤에 맞춘 추천</h2>
+                            <span class="outfit-tag" id="personal-outfit-tag">Personal Best</span>
+                        </div>
+                        <ul class="outfit-list" id="personal-outfit-list">
+                            <!-- Items will be injected -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End main-container -->
+    </div> <!-- End personal-tab -->
 
     <script>
         window.addEventListener('error', (e) => {
@@ -1399,7 +1482,8 @@
                 },
                 women: {
                     'Office': {
-                        'Hot': { tag: '썸머 시크룩', image: 'korean_female_summer_office_30s_1772599653811.png', items: [{ cat: 'Top', name: '민소매 실크 블라우스' }, { cat: 'Bottom', name: '린넨 쿨 와이드 슬랙스' }, { cat: 'Shoes', name: '스트랩 샌들 힐' }, { cat: 'Bag', name: '미니 체인 숄더백' }, { cat: 'Accessory', name: '골드 샹들리에 이어링' }],
+                        'Hot': {
+                            tag: '썸머 시크룩', image: 'korean_female_summer_office_30s_1772599653811.png', items: [{ cat: 'Top', name: '민소매 실크 블라우스' }, { cat: 'Bottom', name: '린넨 쿨 와이드 슬랙스' }, { cat: 'Shoes', name: '스트랩 샌들 힐' }, { cat: 'Bag', name: '미니 체인 숄더백' }, { cat: 'Accessory', name: '골드 샹들리에 이어링' }],
                             guide: {
                                 title: '30대 여성 썸머 시크 스타일 가이드',
                                 tips: [
@@ -1409,7 +1493,8 @@
                                 ]
                             }
                         },
-                        'Sunny': { tag: '모던 오피스', image: 'korean_female_autumn_office_30s_1772599672322.png', items: [{ cat: 'Top', name: '타이 포인트 블라우스' }, { cat: 'Outer', name: '슬림핏 베이지 자켓' }, { cat: 'Bottom', name: '블랙 H라인 미디 스커트' }, { cat: 'Shoes', name: '누드톤 페이턴트 펌프스' }, { cat: 'Bag', name: '토프 그레이 가죽 토트백' }],
+                        'Sunny': {
+                            tag: '모던 오피스', image: 'korean_female_autumn_office_30s_1772599672322.png', items: [{ cat: 'Top', name: '타이 포인트 블라우스' }, { cat: 'Outer', name: '슬림핏 베이지 자켓' }, { cat: 'Bottom', name: '블랙 H라인 미디 스커트' }, { cat: 'Shoes', name: '누드톤 페이턴트 펌프스' }, { cat: 'Bag', name: '토프 그레이 가죽 토트백' }],
                             guide: {
                                 title: '30대 여성 모던 오피스 스타일 가이드',
                                 tips: [
@@ -1524,7 +1609,7 @@
                 const date = String(dateObj.getDate()).padStart(2, '0');
                 const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
                 const weekday = weekdays[dateObj.getDay()];
-                
+
                 return `
                     <button class="date-btn ${i === selectedDayIndex ? 'active' : ''}" onclick="selectDay(${i})" style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0.8rem 1.2rem; min-width: 100px;">
                         <span style="font-size: 0.75rem; color: var(--text-dim); font-weight: 500;">${labels[i]}</span>
@@ -1575,14 +1660,14 @@
         function updateMainUI() {
             if (weatherForecast.length === 0) return;
             const day = weatherForecast[selectedDayIndex];
-            
+
             const dateObj = new Date(day.date);
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');
             const date = String(dateObj.getDate()).padStart(2, '0');
             const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
             const weekday = weekdays[dateObj.getDay()];
             const labels = ['내일', '모레', '글피'];
-            
+
             const titleHtml = `
                 <span style="font-size: 0.5em; display: block; margin-bottom: 0.5rem; color: var(--text-dim); letter-spacing: 2px;">${month}.${date} ${weekday} / ${labels[selectedDayIndex]}</span>
                 ${labels[selectedDayIndex]}의 추천 코디
@@ -1592,7 +1677,7 @@
             const weatherIconElem = document.getElementById('quick-weather-icon');
             const tempElem = document.getElementById('quick-temp');
             const descElem = document.getElementById('quick-desc');
-            
+
             if (weatherIconElem) weatherIconElem.textContent = weatherIcons[day.code] || '⛅';
             if (tempElem) tempElem.textContent = `${day.max}°C / ${day.min}°C`;
             if (descElem) descElem.textContent = getDayDesc(day);
@@ -1621,11 +1706,11 @@
 
                 if (title) title.innerHTML = titleOverride || titleHtml;
                 if (tag) tag.textContent = rec.tag;
-                
+
                 const fallbackImg = currentGender === 'men'
                     ? 'https://images.unsplash.com/photo-1543852084-298319e71fd1?auto=format&fit=crop&w=800&q=80'
                     : 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80';
-                
+
                 // Match Badge Logic
                 let matchBadgeHtml = '';
                 if (diagnosisResult) {
@@ -1652,7 +1737,7 @@
 
             // Update both tabs
             updateTabOutfit('weather', recommendation);
-            
+
             let personalTitle = null;
             if (diagnosisResult) {
                 personalTitle = `
@@ -1665,7 +1750,7 @@
             // Update Styling Guide dynamically
             const guideTitle = document.querySelector('#styling-guide h3');
             const guideContent = document.getElementById('guide-content');
-            
+
             const guideData = occasionData.guide || {
                 title: `${currentOccasion} Styling Guide`,
                 tips: ['현재 날씨와 상황에 맞는 코디를 제안해 드립니다.', '자신만의 스타일로 아이템을 조합해 보세요.', '다양한 연령대별 추천을 확인해 보세요.']
@@ -1755,7 +1840,7 @@
             const btns = document.querySelectorAll('.tab-btn');
             const mainTitle = document.getElementById('main-title');
             const mainDesc = document.getElementById('main-desc');
-            
+
             // Cleanup previous states
             panes.forEach(pane => {
                 pane.style.display = 'none';
@@ -1797,13 +1882,13 @@
         };
 
         // --- Personal Color Diagnosis Logic ---
-        
+
         function initPersonalColorDiagnosis() {
             const imageInput = document.getElementById('image-input');
             const dropZone = document.getElementById('drop-zone');
 
             imageInput.addEventListener('change', (e) => handleImage(e.target.files[0]));
-            
+
             dropZone.addEventListener('dragover', (e) => {
                 e.preventDefault();
                 dropZone.style.borderColor = 'var(--accent-blue)';
@@ -1845,7 +1930,7 @@
                 const landmarks = results.multiFaceLandmarks[0];
                 const canvas = document.getElementById('preview-canvas');
                 const ctx = canvas.getContext('2d');
-                
+
                 const skinSamples = [
                     landmarks[234], // Right cheek
                     landmarks[454], // Left cheek
@@ -1854,10 +1939,10 @@
 
                 const avgColor = getAverageColor(ctx, skinSamples, canvas.width, canvas.height);
                 const lab = rgbToLab(avgColor.r, avgColor.g, avgColor.b);
-                
+
                 const resultType = classifyPersonalColor(lab.l, lab.a, lab.b);
                 diagnosisResult = resultType;
-                
+
                 progressBar.style.width = '100%';
                 setTimeout(() => {
                     showResults(resultType, lab);
@@ -1917,19 +2002,19 @@
         function getAverageColor(ctx, landmarks, width, height) {
             let r = 0, g = 0, b = 0;
             const size = 10; // 10x10 sample area
-            
+
             landmarks.forEach(lm => {
                 const x = Math.floor(lm.x * width);
                 const y = Math.floor(lm.y * height);
-                const data = ctx.getImageData(x - size/2, y - size/2, size, size).data;
-                
+                const data = ctx.getImageData(x - size / 2, y - size / 2, size, size).data;
+
                 for (let i = 0; i < data.length; i += 4) {
                     r += data[i];
-                    g += data[i+1];
-                    b += data[i+2];
+                    g += data[i + 1];
+                    b += data[i + 2];
                 }
             });
-            
+
             const count = landmarks.length * (size * size);
             return { r: r / count, g: g / count, b: b / count };
         }
@@ -1946,9 +2031,9 @@
             let y = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 1.00000;
             let z = (r * 0.0193 + g * 0.1192 + b * 0.9505) / 1.08883;
 
-            x = x > 0.008856 ? Math.pow(x, 1/3) : (7.787 * x) + (16 / 116);
-            y = y > 0.008856 ? Math.pow(y, 1/3) : (7.787 * y) + (16 / 116);
-            z = z > 0.008856 ? Math.pow(z, 1/3) : (7.787 * z) + (16 / 116);
+            x = x > 0.008856 ? Math.pow(x, 1 / 3) : (7.787 * x) + (16 / 116);
+            y = y > 0.008856 ? Math.pow(y, 1 / 3) : (7.787 * y) + (16 / 116);
+            z = z > 0.008856 ? Math.pow(z, 1 / 3) : (7.787 * z) + (16 / 116);
 
             return {
                 l: (116 * y) - 16,
@@ -1958,8 +2043,8 @@
         }
 
         function classifyPersonalColor(l, a, b) {
-            const chroma = Math.sqrt(a*a + b*b);
-            const isWarm = b > 14; 
+            const chroma = Math.sqrt(a * a + b * b);
+            const isWarm = b > 14;
 
             if (isWarm) {
                 if (l > 65) {
@@ -1980,18 +2065,18 @@
             const data = personalColorData[type];
             document.getElementById('analysis-progress').style.display = 'none';
             document.getElementById('diagnosis-guide').style.display = 'none';
-            
+
             const resultsDisplay = document.getElementById('results-display');
             resultsDisplay.style.display = 'flex';
-            
+
             // Show recommendation section
             const recommender = document.getElementById('personal-recommender');
             if (recommender) recommender.style.display = 'block';
-            
+
             document.getElementById('result-season').textContent = data.season;
             document.getElementById('result-type').textContent = type;
             document.getElementById('result-desc').textContent = data.desc;
-            
+
             // Palette dots
             const paletteGrid = document.getElementById('palette-grid');
             paletteGrid.innerHTML = data.palette.map(color => `
@@ -2040,15 +2125,23 @@
             }, 100);
         });
     </script>
-    <footer style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 4rem 1rem; background: var(--secondary-bg);">
+    <footer
+        style="width: 100%; border-top: 1px solid var(--glass-border); margin-top: 120px; padding: 4rem 1rem; background: var(--secondary-bg);">
         <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-            <h4 style="color: var(--text-main); font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; font-style: italic; margin-bottom: 2rem;">Today's Lookbook</h4>
+            <h4
+                style="color: var(--text-main); font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; font-style: italic; margin-bottom: 2rem;">
+                Today's Lookbook</h4>
             <div style="display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem;">
-                <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Privacy Policy</a>
-                <a href="terms.html" style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Terms of Service</a>
+                <a href="privacy.html"
+                    style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Privacy
+                    Policy</a>
+                <a href="terms.html"
+                    style="color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500;">Terms of
+                    Service</a>
             </div>
         </div>
-        <div style="max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
+        <div
+            style="max-width: 1000px; margin: 0 auto; border-top: 1px solid var(--glass-border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; opacity: 0.6;">
             <p style="font-size: 0.75rem; letter-spacing: 1px;">&copy; 2026 TODAY'S LOOKBOOK. ALL RIGHTS RESERVED.</p>
             <div style="display: flex; gap: 2rem; align-items: center;">
                 <span style="font-size: 0.6rem; opacity: 0.3;">Build: 20260325-1600</span>
