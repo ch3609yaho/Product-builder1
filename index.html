@@ -1422,6 +1422,26 @@
                             <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.5;">강렬한 대비감으로 완성하는 시크하고 도회적인 룩</p>
                         </div>
                     </a>
+                    <!-- Theory -->
+                    <a href="color-theory.html" style="text-decoration: none; display: flex; flex-direction: column; background: var(--secondary-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(156, 39, 176, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="height: 120px; background: linear-gradient(135deg, #F3E5F5, #E1BEE7); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 3rem;">🔍</span>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: var(--text-main); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">진단의 원리</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.5;">피부색, 눈동자, 머리카락 색상이 미치는 영향 탐구</p>
+                        </div>
+                    </a>
+                    <!-- Subtypes -->
+                    <a href="color-subtypes.html" style="text-decoration: none; display: flex; flex-direction: column; background: var(--secondary-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255, 152, 0, 0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                        <div style="height: 120px; background: linear-gradient(135deg, #FFF3E0, #FFE0B2); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 3rem;">🎨</span>
+                        </div>
+                        <div style="padding: 1.5rem;">
+                            <h4 style="color: var(--text-main); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">세부 톤 분류 알아보기</h4>
+                            <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0; line-height: 1.5;">라이트, 브라이트, 뮤트, 딥 4가지 상세 분류 완벽 이해</p>
+                        </div>
+                    </a>
                 </div>
             </section>
 
@@ -1664,8 +1684,10 @@
 
         async function fetchWeather() {
             try {
-                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max,relative_humidity_2m_max&timezone=Asia%2FSeoul`);
+                const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSeoul`);
                 const data = await response.json();
+
+                if (data.error) throw new Error(data.reason || 'API Error');
 
                 weatherForecast = [];
                 for (let i = 1; i <= 3; i++) {
@@ -1681,11 +1703,16 @@
                 updateMainUI();
             } catch (e) {
                 console.error("Weather fetch failed:", e);
-                // Simple hardcoded fallback for local testing
+                // Fallback using actual tomorrow/next dates in YYYY-MM-DD format
+                const today = new Date();
+                const d1 = new Date(today); d1.setDate(today.getDate() + 1);
+                const d2 = new Date(today); d2.setDate(today.getDate() + 2);
+                const d3 = new Date(today); d3.setDate(today.getDate() + 3);
+                
                 weatherForecast = [
-                    { date: 'Tomorrow', max: 15, min: 8, code: 0, rain: 5 },
-                    { date: 'Next', max: 22, min: 12, code: 1, rain: 10 },
-                    { date: 'Later', max: 13, min: 6, code: 61, rain: 80 }
+                    { date: d1.toISOString().split('T')[0], max: 15, min: 8, code: 0, rain: 5 },
+                    { date: d2.toISOString().split('T')[0], max: 22, min: 12, code: 1, rain: 10 },
+                    { date: d3.toISOString().split('T')[0], max: 13, min: 6, code: 61, rain: 80 }
                 ];
                 updateForecastRow();
                 updateMainUI();
