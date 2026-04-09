@@ -2163,13 +2163,18 @@
                 return;
             }
 
-            try {
-                await faceMesh.send({ image: canvas });
-            } catch (err) {
-                console.error("Analysis failed:", err);
-                alert("분석 중 오류가 발생했습니다. 브라우저 설정에서 하드웨어 가속이 켜져 있는지 확인해 주세요.");
-                resetDiagnosis();
-            }
+            const resizedImg = new Image();
+            resizedImg.onload = async () => {
+                try {
+                    await faceMesh.send({ image: resizedImg });
+                } catch (err) {
+                    console.error("Analysis failed:", err);
+                    alert("분석 중 오류가 발생했습니다. 브라우저 설정에서 하드웨어 가속이 켜져 있는지 확인해 주세요.");
+                    resetDiagnosis();
+                }
+            };
+            // Use low quality jpeg to guarantee memory safety for WebGL processing
+            resizedImg.src = canvas.toDataURL('image/jpeg', 0.8);
         }
 
         function getAverageColor(ctx, landmarks, width, height) {
