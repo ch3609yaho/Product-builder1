@@ -2163,10 +2163,23 @@
                 return;
             }
 
-            const resizedImg = new Image();
-            resizedImg.onload = async () => {
+            let hiddenImg = document.getElementById('hidden-mediapipe-img');
+            if (!hiddenImg) {
+                hiddenImg = document.createElement('img');
+                hiddenImg.id = 'hidden-mediapipe-img';
+                // Attach to DOM but keep invisible so it's fully rendered by browser engine
+                hiddenImg.style.position = 'absolute';
+                hiddenImg.style.top = '-9999px';
+                hiddenImg.style.opacity = '0';
+                hiddenImg.crossOrigin = 'anonymous';
+                document.body.appendChild(hiddenImg);
+            }
+
+            hiddenImg.onload = async () => {
                 try {
-                    await faceMesh.send({ image: resizedImg });
+                    // Small delay to ensure the browser has flushed the DOM attachment to GPU
+                    await new Promise(resolve => setTimeout(resolve, 50));
+                    await faceMesh.send({ image: hiddenImg });
                 } catch (err) {
                     console.error("Analysis failed:", err);
                     alert("분석 중 오류가 발생했습니다. 브라우저 설정에서 하드웨어 가속이 켜져 있는지 확인해 주세요.");
@@ -2174,7 +2187,7 @@
                 }
             };
             // Use low quality jpeg to guarantee memory safety for WebGL processing
-            resizedImg.src = canvas.toDataURL('image/jpeg', 0.8);
+            hiddenImg.src = canvas.toDataURL('image/jpeg', 0.8);
         }
 
         function getAverageColor(ctx, landmarks, width, height) {
