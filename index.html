@@ -2164,7 +2164,7 @@
             }
 
             try {
-                await faceMesh.send({ image: image });
+                await faceMesh.send({ image: canvas });
             } catch (err) {
                 console.error("Analysis failed:", err);
                 alert("분석 중 오류가 발생했습니다. 브라우저 설정에서 하드웨어 가속이 켜져 있는지 확인해 주세요.");
