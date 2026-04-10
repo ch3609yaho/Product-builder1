@@ -2054,67 +2054,60 @@
         // --- Personal Color Diagnosis Logic ---
 
         let isPersonalColorInit = false;
+        let initRetryCount = 0;
+        const versionTag = "v1.0.12"; // Force cache-busting for Whale/Chrome
+
         async function initPersonalColorDiagnosis() {
-            // Prevent multiple event listener attachments
             if (!isPersonalColorInit) {
                 const imageInput = document.getElementById('image-input');
                 const dropZone = document.getElementById('drop-zone');
-
-                imageInput.addEventListener('change', (e) => handleImage(e.target.files[0]));
-
-                dropZone.addEventListener('dragover', (e) => {
-                    e.preventDefault();
-                    dropZone.style.borderColor = 'var(--accent-blue)';
-                });
-
-                dropZone.addEventListener('dragleave', () => {
-                    dropZone.style.borderColor = 'var(--glass-border)';
-                });
-
-                dropZone.addEventListener('drop', (e) => {
-                    e.preventDefault();
-                    dropZone.style.borderColor = 'var(--glass-border)';
-                    handleImage(e.dataTransfer.files[0]);
-                });
-                
+                if (imageInput) imageInput.addEventListener('change', (e) => handleImage(e.target.files[0]));
+                if (dropZone) {
+                    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--accent-blue)'; });
+                    dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = 'var(--glass-border)'; });
+                    dropZone.addEventListener('drop', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--glass-border)'; handleImage(e.dataTransfer.files[0]); });
+                }
                 isPersonalColorInit = true;
             }
 
-            // Initialize Modern FaceLandmarker securely
-            try {
-                if (!faceLandmarker) {
-                    const visionModule = await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs");
-                    const vision = await visionModule.FilesetResolver.forVisionTasks(
-                        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
-                    );
+            if (faceLandmarker) return true;
 
-                    try {
-                        faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, {
-                            baseOptions: {
-                                modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
-                                delegate: "GPU"
-                            },
-                            outputFaceBlendshapes: false,
-                            runningMode: "IMAGE",
-                            numFaces: 1
-                        });
-                        console.log("FaceLandmarker initialized with GPU.");
-                    } catch (gpuErr) {
-                        console.warn("GPU processing locked or failed, safely falling back to CPU...", gpuErr);
-                        faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, {
-                            baseOptions: {
-                                modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
-                                delegate: "CPU"
-                            },
-                            outputFaceBlendshapes: false,
-                            runningMode: "IMAGE",
-                            numFaces: 1
-                        });
-                        console.log("FaceLandmarker initialized with CPU.");
-                    }
+            try {
+                console.log("Starting MediaPipe Initialization...");
+                // Use version tag to bypass stale browser cache in Whale
+                const visionModule = await import(`https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs?v=${versionTag}`);
+                const vision = await visionModule.FilesetResolver.forVisionTasks(
+                    "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
+                );
+
+                const options = {
+                    baseOptions: {
+                        modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task?v=${versionTag}`,
+                        delegate: "GPU"
+                    },
+                    outputFaceBlendshapes: false,
+                    runningMode: "IMAGE",
+                    numFaces: 1
+                };
+
+                try {
+                    faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, options);
+                    console.log("FaceLandmarker: GPU Mode Success");
+                } catch (gpuErr) {
+                    console.warn("FaceLandmarker: GPU failed, switching to CPU...", gpuErr);
+                    options.baseOptions.delegate = "CPU";
+                    faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, options);
+                    console.log("FaceLandmarker: CPU Mode Success");
                 }
+                return true;
             } catch (err) {
-                console.error("MediaPipe FaceLandmarker initialization failed:", err);
+                console.error("Initialization Failed:", err);
+                if (initRetryCount < 2) {
+                    initRetryCount++;
+                    console.log(`Retrying initialization... (${initRetryCount}/2)`);
+                    return await initPersonalColorDiagnosis();
+                }
+                return false;
             }
         }
 
@@ -2181,8 +2174,12 @@
             ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
             if (!faceLandmarker) {
-                alert("분석 엔진을 초기화하는 중입니다. 새로고침 후 잠시만 기다려주세요.");
-                return;
+                const success = await initPersonalColorDiagnosis();
+                if (!success) {
+                    alert("분석 엔진 로드에 실패했습니다. 웨일 브라우저의 설정에서 '하드웨어 가속'을 켜주시거나, 캐시 삭제 후 다시 시도해주세요.");
+                    resetDiagnosis();
+                    return;
+                }
             }
 
             let hiddenImg = document.getElementById('hidden-mediapipe-img');
