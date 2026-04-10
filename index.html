@@ -42,12 +42,7 @@
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6635015066599694"
         crossorigin="anonymous"></script>
-    <!-- MediaPipe scripts for Personal Color Diagnosis (Modern Tasks Vision) -->
-    <script type="module">
-        import { FaceLandmarker, FilesetResolver } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs";
-        window.FaceLandmarker = FaceLandmarker;
-        window.FilesetResolver = FilesetResolver;
-    </script>
+    <!-- MediaPipe scripts for Personal Color Diagnosis (Dynamically Loaded) -->
     <style>
         :root {
             /* Minimalist Luxury - White & Ink */
@@ -2058,47 +2053,65 @@
 
         // --- Personal Color Diagnosis Logic ---
 
+        let isPersonalColorInit = false;
         async function initPersonalColorDiagnosis() {
-            const imageInput = document.getElementById('image-input');
-            const dropZone = document.getElementById('drop-zone');
+            // Prevent multiple event listener attachments
+            if (!isPersonalColorInit) {
+                const imageInput = document.getElementById('image-input');
+                const dropZone = document.getElementById('drop-zone');
 
-            imageInput.addEventListener('change', (e) => handleImage(e.target.files[0]));
+                imageInput.addEventListener('change', (e) => handleImage(e.target.files[0]));
 
-            dropZone.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                dropZone.style.borderColor = 'var(--accent-blue)';
-            });
+                dropZone.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    dropZone.style.borderColor = 'var(--accent-blue)';
+                });
 
-            dropZone.addEventListener('dragleave', () => {
-                dropZone.style.borderColor = 'var(--glass-border)';
-            });
+                dropZone.addEventListener('dragleave', () => {
+                    dropZone.style.borderColor = 'var(--glass-border)';
+                });
 
-            dropZone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                dropZone.style.borderColor = 'var(--glass-border)';
-                handleImage(e.dataTransfer.files[0]);
-            });
+                dropZone.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    dropZone.style.borderColor = 'var(--glass-border)';
+                    handleImage(e.dataTransfer.files[0]);
+                });
+                
+                isPersonalColorInit = true;
+            }
 
-            // Initialize Modern FaceLandmarker once
+            // Initialize Modern FaceLandmarker securely
             try {
-                if (!window.FilesetResolver || !window.FaceLandmarker) {
-                    // Script not fully loaded yet, retry in 200ms
-                    setTimeout(initPersonalColorDiagnosis, 200);
-                    return;
-                }
                 if (!faceLandmarker) {
-                    const vision = await window.FilesetResolver.forVisionTasks(
+                    const visionModule = await import("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/vision_bundle.mjs");
+                    const vision = await visionModule.FilesetResolver.forVisionTasks(
                         "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.3/wasm"
                     );
-                    faceLandmarker = await window.FaceLandmarker.createFromOptions(vision, {
-                        baseOptions: {
-                            modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
-                            delegate: "GPU" // Will automatically fallback if WebGL fails
-                        },
-                        outputFaceBlendshapes: false,
-                        runningMode: "IMAGE",
-                        numFaces: 1
-                    });
+
+                    try {
+                        faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, {
+                            baseOptions: {
+                                modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
+                                delegate: "GPU"
+                            },
+                            outputFaceBlendshapes: false,
+                            runningMode: "IMAGE",
+                            numFaces: 1
+                        });
+                        console.log("FaceLandmarker initialized with GPU.");
+                    } catch (gpuErr) {
+                        console.warn("GPU processing locked or failed, safely falling back to CPU...", gpuErr);
+                        faceLandmarker = await visionModule.FaceLandmarker.createFromOptions(vision, {
+                            baseOptions: {
+                                modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`,
+                                delegate: "CPU"
+                            },
+                            outputFaceBlendshapes: false,
+                            runningMode: "IMAGE",
+                            numFaces: 1
+                        });
+                        console.log("FaceLandmarker initialized with CPU.");
+                    }
                 }
             } catch (err) {
                 console.error("MediaPipe FaceLandmarker initialization failed:", err);
