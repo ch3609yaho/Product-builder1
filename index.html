@@ -1485,15 +1485,78 @@
         let faceLandmarker = null;
 
         const personalColorData = {
-            'Spring Light': { season: 'Spring Warm', desc: '밝고 투명한 피부톤으로 파스텔 노란색 계열이 잘 어울리는 화사한 이미지입니다.', palette: ['#FEF1B5', '#FDD7E4', '#CEE9D1', '#FFD700', '#FFA07A', '#98FB98', '#AFEEEE', '#E6E6FA'] },
-            'Spring Bright': { season: 'Spring Warm', desc: '생기 있고 선명한 컬러가 어울리는 고채도의 발랄하고 에너지가 넘치는 타입입니다.', palette: ['#FFCC00', '#FF6666', '#33CC33', '#FF9933', '#FF3399', '#0099FF', '#FFEB3B', '#FF5722'] },
-            'Summer Light': { season: 'Summer Cool', desc: '흰기가 섞인 시원한 파스텔 톤이 잘 어울리는 청순하고 깨끗한 이미지입니다.', palette: ['#F0F8FF', '#E6E6FA', '#FFB6C1', '#B0E0E6', '#D8BFD8', '#F5FFFA', '#F0FFF0', '#FFF0F5'] },
-            'Summer Mute': { season: 'Summer Cool', desc: '회색기가 도는 차분하고 부드러운 컬러가 어울리는 지적이고 우아한 타입입니다.', palette: ['#C3B1E1', '#91A3B0', '#B2AC88', '#8A9A5B', '#708090', '#778899', '#BC8F8F', '#5F9EA0'] },
-            'Autumn Mute': { season: 'Autumn Warm', desc: '차분한 베이지와 가을의 자연스러운 색감이 어울리는 성숙하고 이지적인 이미지입니다.', palette: ['#D2B48C', '#BC8F8F', '#8B4513', '#A0522D', '#CD853F', '#DEB887', '#556B2F', '#BDB76B'] },
-            'Autumn Deep': { season: 'Autumn Warm', desc: '짙고 풍부한 가을의 컬러가 어울리는 고급스럽고 깊이 있는 분위기의 타입입니다.', palette: ['#800000', '#4B5320', '#654321', '#5D3954', '#8B0000', '#3B3C36', '#228B22', '#DAA520'] },
-            'Winter Bright': { season: 'Winter Cool', desc: '대비가 강하고 선명한 원색이 어울리는 강렬하고 도도한 도시적 이미지입니다.', palette: ['#FFFFFF', '#000000', '#FF00FF', '#0000FF', '#FF0000', '#FFFF00', '#00FFFF', '#C0C0C0'] },
-            'Winter Deep': { season: 'Winter Cool', desc: '검은 빛이 도는 어두운 톤과 강렬한 대비가 어울리는 시크하고 카리스마 있는 타입입니다.', palette: ['#191970', '#310062', '#002E63', '#4B0082', '#000000', '#2E0854', '#3E0D0D', '#013220'] }
-            // Add more if needed following the 12 types (added 8 common variations as base)
+            'Spring Light': { 
+                season: 'Spring Warm', 
+                desc: '밝고 투명한 피부톤으로 파스텔 노란색 계열이 잘 어울리는 화사하고 청순한 이미지입니다.', 
+                palettes: {
+                    best: ['#FFC8A8', '#F6B7C8', '#9DEDEC', '#FFFCD1'], // Peach, Rose, Aqua, Cream
+                    neutral: ['#C5A586', '#F5F5DC', '#DEB887', '#BEE094'], // Camel, Beige, Tan, Lime
+                    worst: ['#000000', '#333333', '#191970', '#800000']  // Black, Charcoal, Navy, Maroon
+                }
+            },
+            'Spring Bright': { 
+                season: 'Spring Warm', 
+                desc: '생기 있고 선명한 컬러가 어울리는 고채도의 발랄하고 에너지가 넘치는 타입입니다.', 
+                palettes: {
+                    best: ['#FF7F50', '#BFFF00', '#40E0D0', '#FF1493'], // Coral, Lime, Turquoise, Fuchsia
+                    neutral: ['#FFFDD0', '#4B3621', '#000080', '#F5F5DC'], // Ivory, Brown, Navy, Beige
+                    worst: ['#808080', '#556B2F', '#404040', '#708090']  // Muted Grey, Olive, Dark Muted, Slate
+                }
+            },
+            'Summer Light': { 
+                season: 'Summer Cool', 
+                desc: '흰기가 섞인 시원한 파스텔 톤이 잘 어울리는 청순하고 깨끗한 이미지입니다.', 
+                palettes: {
+                    best: ['#B0C4DE', '#FFB6C1', '#E6E6FA', '#AFEEEE'], // Powder Blue, Pink, Lavender, Aqua
+                    neutral: ['#F8F4F0', '#A9A9A9', '#C2B6A8', '#D8BFD8'], // Soft White, Dove Gray, Taupe, Thistle
+                    worst: ['#000000', '#FFA500', '#FFD700', '#8B4513']  // Black, Orange, Gold, Brown
+                }
+            },
+            'Summer Mute': { 
+                season: 'Summer Cool', 
+                desc: '회색기가 도는 차분하고 부드러운 컬러가 어울리는 지적이고 우아한 타입입니다.', 
+                palettes: {
+                    best: ['#C79F9F', '#718296', '#8A9A8B', '#A599B5'], // Dusty Rose, Slate Blue, Sage, Muted Lavender
+                    neutral: ['#B2B2B2', '#3B4450', '#9B8D85', '#778899'], // Soft Gray, Navy, Mushroom, Slate Gray
+                    worst: ['#FF0000', '#FFA500', '#FFD700', '#FF3399']  // Bright Red, Orange, Gold, Neon Pink
+                }
+            },
+            'Autumn Mute': { 
+                season: 'Autumn Warm', 
+                desc: '차분한 베이지와 가을의 자연스러운 색감이 어울리는 성숙하고 이지적인 이미지입니다.', 
+                palettes: {
+                    best: ['#C8AD7F', '#808000', '#CC7755', '#D4AF37'], // Warm Beige, Olive, Terracotta, Muted Gold
+                    neutral: ['#F3ECD8', '#6F4E37', '#A0522D', '#CD853F'], // Cream, Coffee, Sienna, Peru
+                    worst: ['#000000', '#FFFFFF', '#FF00FF', '#0000FF']  // Black, Stark White, Magenta, Blue
+                }
+            },
+            'Autumn Deep': { 
+                season: 'Autumn Warm', 
+                desc: '짙고 풍부한 가을의 컬러가 어울리는 고급스럽고 깊이 있는 분위기의 타입입니다.', 
+                palettes: {
+                    best: ['#843A36', '#71803C', '#0C6279', '#8B0000'], // Brick Red, Olive Green, Deep Teal, Dark Red
+                    neutral: ['#4A1B1F', '#DDA631', '#F5F5DC', '#BC8F8F'], // Chocolate, Mustard, Beige, Rosy Brown
+                    worst: ['#B0E0E6', '#E6E6FA', '#FFC0CB', '#F0FFFF']  // Baby Blue, Lavender, Soft Pink, Azure
+                }
+            },
+            'Winter Bright': { 
+                season: 'Winter Cool', 
+                desc: '대비가 강하고 선명한 원색이 어울리는 강렬하고 도도한 도시적 이미지입니다.', 
+                palettes: {
+                    best: ['#FF1493', '#0000FF', '#00FF7F', '#FFFFFF'], // Deep Pink, Cobalt, Emerald, White
+                    neutral: ['#000000', '#4682B4', '#C0C0C0', '#708090'], // Black, Steel Blue, Silver, Slate Gray
+                    worst: ['#F5F5DC', '#D2B48C', '#BC8F8F', '#BDB76B']  // Beige, Tan, Rosy Brown, Khaki
+                }
+            },
+            'Winter Deep': { 
+                season: 'Winter Cool', 
+                desc: '검은 빛이 도는 어두운 톤과 강렬한 대비가 어울리는 시크하고 카리스마 있는 타입입니다.', 
+                palettes: {
+                    best: ['#800000', '#191970', '#50C878', '#310062'], // Maroon, Midnight Navy, Emerald, Deep Purple
+                    neutral: ['#000000', '#36454F', '#FFFFFF', '#2F4F4F'], // Black, Charcoal, White, Dark Slate Gray
+                    worst: ['#FFA500', '#FFD700', '#F5F5DC', '#FFCC00']  // Orange, Gold, Beige, Yellow
+                }
+            }
         };
 
         const ageOccasions = {
@@ -2286,10 +2349,35 @@
             document.getElementById('result-type').textContent = type;
             document.getElementById('result-desc').textContent = data.desc;
 
-            // Palette dots
+            // Palette categories
             const paletteGrid = document.getElementById('palette-grid');
-            paletteGrid.innerHTML = data.palette.map(color => `
-                <div class="palette-dot" style="background-color: ${color}"></div>
+            
+            const categories = [
+                { name: '가장 잘 어울리는 색 (Best)', key: 'best', emoji: '✨', titleColor: '#00AEEF' },
+                { name: '무난한 색 (Neutral)', key: 'neutral', emoji: '✔️', titleColor: '#666666' },
+                { name: '피해야 할 색 (Worst)', key: 'worst', emoji: '❌', titleColor: '#FF4D4D' }
+            ];
+
+            paletteGrid.style.display = 'flex';
+            paletteGrid.style.flexDirection = 'column';
+            paletteGrid.style.gap = '2rem';
+            paletteGrid.style.width = '100%';
+            paletteGrid.style.padding = '1rem 0';
+            
+            paletteGrid.innerHTML = categories.map(cat => `
+                <div style="background: rgba(255,255,255,0.4); border-radius: 20px; padding: 1.5rem; border: 1px solid var(--glass-border);">
+                    <h5 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 700; color: ${cat.titleColor}; display: flex; align-items: center; gap: 0.5rem;">
+                        <span>${cat.emoji}</span> ${cat.name}
+                    </h5>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        ${data.palettes[cat.key].map(color => `
+                            <div style="display: flex; flex-direction: column; align-items: center; gap: 0.4rem;">
+                                <div class="palette-dot" style="background-color: ${color}; width: 60px; height: 60px; border-radius: 50%; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s ease;"></div>
+                                <span style="font-size: 0.7rem; font-weight: 600; color: var(--text-dim); text-transform: uppercase;">${color}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
             `).join('');
 
             // Calculate score (mock distance-based for now)
