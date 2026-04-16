@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://product-builder1-3ad.pages.dev/sitemap.xml
